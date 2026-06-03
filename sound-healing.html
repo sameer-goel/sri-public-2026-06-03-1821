@@ -460,7 +460,7 @@
           </div>
         </div>
         <!-- Formspree fallback: <form class="form" action="https://formspree.io/f/xkopkvpp" method="POST"> -->
-        <form class="form" id="contactForm">
+        <form class="form" id="contactForm" action="https://formspree.io/f/xkopkvpp" method="POST">
           <div class="form__fields">
             <div class="form__group">
               <label for="name">Full Name</label>
@@ -692,49 +692,6 @@
       });
     }
 
-    // --- Lead Capture: Contact Form ---
-    (function() {
-      const form = document.getElementById('contactForm');
-      if (!form) return;
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const fields = form.querySelector('.form__fields');
-        const success = form.querySelector('.form__success');
-        const error = form.querySelector('.form__error');
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        error.style.display = 'none';
-        const params = new URLSearchParams(window.location.search);
-        const utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
-          .filter(k => params.get(k)).map(k => k + '=' + params.get(k)).join('&');
-        const source = window.location.href + (utms ? (window.location.search ? '&' : '?') + utms : '');
-        try {
-          const res = await fetch('https://twipryqprdqubmiaebjg.supabase.co/functions/v1/lead-capture', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: form.querySelector('#name').value,
-              email: form.querySelector('#email').value,
-              message: form.querySelector('#message').value,
-              interest: 'contact',
-              source: source
-            })
-          });
-          const data = await res.json();
-          if (data.success) {
-            fields.style.display = 'none';
-            success.style.display = 'flex';
-          } else {
-            throw new Error(data.error || 'Unknown error');
-          }
-        } catch (err) {
-          error.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Send Message';
-        }
-      });
-    })();
 
     // Glow intensity
     const glowSlider = document.getElementById('glowSlider');
