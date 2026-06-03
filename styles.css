@@ -1,5 +1,5 @@
 /* ============================================
-   Om Sacred Space — v2 Professional Redesign
+   Om Sacred Space - v2 Professional Redesign
    Design System: Unified spiritual aesthetic
    Palette: Deep indigo + warm gold accents
    ============================================ */
@@ -7,7 +7,7 @@
 /* --- RESET & TOKENS --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  /* Color palette — cohesive indigo/gold spiritual theme */
+  /* Color palette - cohesive indigo/gold spiritual theme */
   --bg-deep:    #0c0a1d;
   --bg-dark:    #110e2a;
   --bg-card:    rgba(255,255,255,0.04);
@@ -443,7 +443,7 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
 .program h3 { color: var(--text-primary); margin-bottom: var(--space-sm); font-size: 20px; }
 .program ul { font-size: 14px; color: var(--text-secondary); }
 .program li { padding: 5px 0 5px 20px; position: relative; }
-.program li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 12px; }
+.program li::before { content: '-'; position: absolute; left: 0; color: var(--gold); font-size: 12px; }
 .program__list--inline { columns: 2; column-gap: var(--space-lg); }
 
 /* --- BENEFITS LIST --- */
@@ -743,7 +743,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   --gold:#d4a8ff;--gold-light:#e8c8ff;--gold-glow:rgba(180,120,255,0.2);--accent:#80b8ff;--accent-soft:rgba(128,184,255,0.1);
 }
 
-/* Divine Lights — deep glow backgrounds */
+/* Divine Lights - deep glow backgrounds */
 [data-theme="divine"] .section--dark {
   background: radial-gradient(ellipse at 20% 50%, rgba(100,60,180,0.08) 0%, transparent 60%),
               radial-gradient(ellipse at 80% 50%, rgba(60,140,220,0.06) 0%, transparent 60%),
@@ -765,7 +765,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
               var(--bg-accent);
 }
 
-/* Divine Lights — spinning LED behind cards */
+/* Divine Lights - spinning LED behind cards */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -782,7 +782,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   overflow: hidden;
 }
 
-/* The LED glow — behind the card as a shadow */
+/* The LED glow - behind the card as a shadow */
 [data-theme="divine"] .card:hover {
   box-shadow:
     0 0 15px 2px rgba(255,107,107,0.3),
@@ -825,7 +825,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .card__body li::before { color: var(--accent); }
 [data-theme="divine"] .card__badge { background: linear-gradient(135deg, #b478ff, #64c8ff); color: #0a0818; }
 
-/* Divine Lights — donation banner */
+/* Divine Lights - donation banner */
 [data-theme="divine"] .donation-banner {
   background: rgba(12,8,28,1); border: none;
   box-shadow: none; transition: box-shadow 0.4s;
@@ -838,7 +838,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .fine-print { color: var(--text-muted); }
 [data-theme="divine"] .fine-print a { color: var(--gold); }
 
-/* Divine Lights — pricing */
+/* Divine Lights - pricing */
 [data-theme="divine"] .pricing-info {
   background: rgba(12,8,28,1); border-color: transparent;
   box-shadow: none; transition: box-shadow 0.4s;
@@ -849,7 +849,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .pricing-info__item strong { color: var(--gold); }
 [data-theme="divine"] .pricing-info__divider { background: rgba(180,120,255,0.15); }
 
-/* Divine Lights — programs */
+/* Divine Lights - programs */
 [data-theme="divine"] .program {
   background: rgba(12,8,28,1); border-color: transparent;
   transition: box-shadow 0.4s;
@@ -860,18 +860,18 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .program h3 { color: var(--text-primary); }
 [data-theme="divine"] .program li::before { color: var(--gold); }
 
-/* Divine Lights — benefits */
+/* Divine Lights - benefits */
 [data-theme="divine"] .benefits-list li { border-bottom-color: rgba(180,120,255,0.08); }
 [data-theme="divine"] .benefit-icon { color: var(--gold); }
 
-/* Divine Lights — FAQ */
+/* Divine Lights - FAQ */
 [data-theme="divine"] .faq__item { border-bottom-color: rgba(180,120,255,0.1); }
 [data-theme="divine"] .faq__item summary { color: var(--text-primary); }
 [data-theme="divine"] .faq__item summary::after { background: rgba(180,120,255,0.1); color: var(--gold); }
 [data-theme="divine"] .faq__item[open] summary::after { background: linear-gradient(135deg, #b478ff, #64c8ff); color: #0a0818; }
 [data-theme="divine"] .faq__answer { color: var(--text-secondary); }
 
-/* Divine Lights — form */
+/* Divine Lights - form */
 [data-theme="divine"] .form {
   background: rgba(180,120,255,0.03); border-color: rgba(180,120,255,0.1);
   box-shadow: 0 0 40px rgba(180,120,255,0.04);
@@ -903,7 +903,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .btn--ghost { border-color: rgba(180,120,255,0.2); color: var(--text-primary); }
 [data-theme="divine"] .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* Divine Lights — social & footer */
+/* Divine Lights - social & footer */
 [data-theme="divine"] .social-links a {
   background: rgba(180,120,255,0.06); border-color: rgba(180,120,255,0.12); color: var(--text-secondary);
   transition: all 0.3s;
@@ -916,7 +916,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 }
 [data-theme="divine"] .footer { background: var(--bg-deep); border-top-color: rgba(180,120,255,0.08); }
 
-/* Divine Lights — marquee */
+/* Divine Lights - marquee */
 [data-theme="divine"] .marquee {
   background: linear-gradient(90deg, #b478ff, #64c8ff, #ff78b4, #b478ff);
   background-size: 200% 100%; color: #0a0818;
@@ -924,7 +924,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 }
 @keyframes marquee-bg { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
-/* Divine Lights — header */
+/* Divine Lights - header */
 [data-theme="divine"] .header--scrolled {
   background: rgba(10,8,24,0.92); backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(180,120,255,0.08);
@@ -933,7 +933,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 [data-theme="divine"] .nav__cta:hover { box-shadow: 0 4px 20px rgba(180,120,255,0.3); }
 [data-theme="divine"] .nav__link--book { color: var(--gold); }
 
-/* Divine Lights — nav link hover glow */
+/* Divine Lights - nav link hover glow */
 [data-theme="divine"] .nav__link:hover {
   text-shadow: 0 0 8px rgba(180,120,255,0.4), 0 0 16px rgba(100,200,255,0.2);
 }
@@ -942,7 +942,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   text-shadow: 0 0 8px rgba(212,168,255,0.5), 0 0 16px rgba(100,200,255,0.3);
 }
 
-/* Divine Lights — hero */
+/* Divine Lights - hero */
 [data-theme="divine"] .hero__overlay {
   background: linear-gradient(180deg, rgba(10,8,24,0.2) 0%, rgba(10,8,24,0.6) 50%,
     rgba(10,8,24,0.95) 85%, var(--bg-deep) 100%),
