@@ -23,6 +23,19 @@
   <noscript>
     <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
+  <script>
+    // Pre-paint: apply saved theme + glow before first render (no flash).
+    (function () {
+      try {
+        var t = localStorage.getItem('oss-theme') || 'divine';
+        document.documentElement.setAttribute('data-theme', t);
+        var g = localStorage.getItem('oss-glow');
+        document.documentElement.style.setProperty('--glow-intensity', ((g !== null ? g : 50) / 100));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'divine');
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -119,7 +132,7 @@
   <style>
     .shop-main { padding: 6rem 0 4rem; }
     .shop-hero { text-align: center; margin-bottom: 3rem; }
-    .shop-hero__sub { color: var(--text-muted, #999); max-width: 500px; margin: 1rem auto 0; font-size: 0.95rem; }
+    .shop-hero__sub { color: var(--text-muted); max-width: 500px; margin: 1rem auto 0; font-size: 0.95rem; }
 
     .shop-grid {
       display: grid;
@@ -133,8 +146,8 @@
     }
 
     .shop-card {
-      background: var(--card-bg, rgba(255,255,255,0.05));
-      border: 1px solid var(--border, rgba(255,255,255,0.12));
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
       border-radius: 16px;
       overflow: hidden;
       text-decoration: none;
@@ -143,7 +156,7 @@
     }
     .shop-card:hover {
       transform: translateY(-6px);
-      border-color: var(--accent, #c9a96e);
+      border-color: var(--gold);
       box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,169,110,0.1);
     }
 
@@ -192,19 +205,19 @@
     }
     .shop-card__body p {
       font-size: 0.8rem;
-      color: var(--text-muted, #999);
+      color: var(--text-muted);
       margin-bottom: 0.6rem;
     }
     .shop-card__price {
       font-size: 1rem;
       font-weight: 500;
-      color: var(--accent, #c9a96e);
+      color: var(--gold);
     }
 
     .shop-promise {
       text-align: center;
       padding: 3rem 0;
-      border-top: 1px solid var(--border, rgba(255,255,255,0.08));
+      border-top: 1px solid var(--border-subtle);
     }
     .shop-promise h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -223,7 +236,7 @@
     }
     .shop-promise__icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
     .shop-promise__item strong { display: block; font-size: 0.85rem; margin-bottom: 0.3rem; }
-    .shop-promise__item p { font-size: 0.75rem; color: var(--text-muted, #999); margin: 0; }
+    .shop-promise__item p { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
 
     @media (max-width: 600px) {
       .shop-grid { grid-template-columns: 1fr; }
@@ -294,60 +307,9 @@
       });
     }
 
-    // Theme controller (shared across pages via localStorage)
-    const themeNames = {
-      dark: 'Mystic Dark', light: 'Sacred Light', forest: 'Forest Temple',
-      ocean: 'Ocean Depth', rose: 'Rose Quartz', sand: 'Desert Sand', divine: 'Divine Lights'
-    };
-    const panel = document.getElementById('themePanel');
-    const backdrop = document.getElementById('tpBackdrop');
-    const trigger = document.getElementById('atmosphereTrigger');
-    const closeBtn = document.getElementById('themePanelClose');
-    const presetsEl = document.getElementById('themePresets');
-    const activeNameEl = document.getElementById('activeThemeName');
-
-    function applyTheme(name) {
-      document.documentElement.setAttribute('data-theme', name);
-      localStorage.setItem('oss-theme', name);
-      activeNameEl.textContent = themeNames[name] || name;
-      presetsEl.querySelectorAll('.tp__preset').forEach(b => {
-        b.classList.toggle('tp__preset--active', b.dataset.theme === name);
-      });
-    }
-    function openPanel() {
-      panel.classList.add('tp--open');
-      backdrop.classList.add('tp__backdrop--open');
-      trigger.classList.add('atmosphere-trigger--open');
-    }
-    function closePanel() {
-      panel.classList.remove('tp--open');
-      backdrop.classList.remove('tp__backdrop--open');
-      trigger.classList.remove('atmosphere-trigger--open');
-    }
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      panel.classList.contains('tp--open') ? closePanel() : openPanel();
-    });
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-    presetsEl.querySelectorAll('.tp__preset').forEach(b => {
-      b.addEventListener('click', () => applyTheme(b.dataset.theme));
-    });
-    applyTheme(localStorage.getItem('oss-theme') || 'divine');
-
-    // Glow intensity (shared)
-    const glowSlider = document.getElementById('glowSlider');
-    const glowVal = document.getElementById('glowVal');
-    const savedGlow = localStorage.getItem('oss-glow');
-    glowSlider.value = savedGlow !== null ? savedGlow : 50;
-    document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
-    glowVal.textContent = glowSlider.value + '%';
-    glowSlider.addEventListener('input', () => {
-      document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
-      glowVal.textContent = glowSlider.value + '%';
-      localStorage.setItem('oss-glow', glowSlider.value);
-    });
+    // Theme controller + glow + settings panel: see shared theme.js
   </script>
+  <script src="theme.js" defer></script>
 </body>
 
 </html>
