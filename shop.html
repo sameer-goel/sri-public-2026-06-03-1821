@@ -330,19 +330,8 @@
   </div>
   <div class="tp__backdrop" id="tpBackdrop"></div>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    if (burger) {
-      burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav__links--open');
-        burger.classList.toggle('burger--open');
-        document.body.classList.toggle('no-scroll');
-      });
-    }
-
-    // Theme controller + glow + settings panel: see shared theme.js
-  </script>
+  <!-- Mobile menu, scroll reveal, form submit: see site.js. Theme: see theme.js. -->
+  <script src="site.js" defer></script>
   <script src="theme.js" defer></script>
 </body>
 
