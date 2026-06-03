@@ -64,14 +64,15 @@
       <p class="coming-soon__sub">An immersive journey of sound, stillness, and transformation is taking shape. Be the
         first to receive the dates, location, and early-bird invitation.</p>
 
-      <form class="signup" action="https://formspree.io/f/xkopkvpp" method="POST">
-        <input type="hidden" name="_subject" value="Retreat early signup — Om Sacred Space">
+      <!-- Formspree fallback: <form class="signup" action="https://formspree.io/f/xkopkvpp" method="POST"> -->
+      <form class="signup" id="retreatSignupForm">
         <label for="email" class="signup__label">Join the early signup</label>
         <div class="signup__row">
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
           <button type="submit" class="btn btn--primary">Notify Me</button>
         </div>
         <p class="signup__success">✦ Thank you. You're on the list.</p>
+        <p class="signup__error" style="display:none; color:#e74c3c; font-size:15px; margin-top:16px;">Something went wrong. Please try again.</p>
       </form>
 
       <a href="index.html" class="coming-soon__back">← Back to Sound Healing</a>
@@ -200,6 +201,48 @@
       b.addEventListener('click', () => applyTheme(b.dataset.theme));
     });
     applyTheme(localStorage.getItem('oss-theme') || 'divine');
+
+    // --- Lead Capture: Retreat Signup Form ---
+    (function() {
+      const form = document.getElementById('retreatSignupForm');
+      if (!form) return;
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const success = form.querySelector('.signup__success');
+        const error = form.querySelector('.signup__error');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        error.style.display = 'none';
+        const params = new URLSearchParams(window.location.search);
+        const utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content']
+          .filter(k => params.get(k)).map(k => k + '=' + params.get(k)).join('&');
+        const source = window.location.href + (utms ? (window.location.search ? '&' : '?') + utms : '');
+        try {
+          const res = await fetch('https://twipryqprdqubmiaebjg.supabase.co/functions/v1/lead-capture', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: form.querySelector('#email').value,
+              interest: 'retreat',
+              source: source
+            })
+          });
+          const data = await res.json();
+          if (data.success) {
+            success.style.display = 'block';
+            btn.style.display = 'none';
+            form.querySelector('#email').style.display = 'none';
+          } else {
+            throw new Error(data.error || 'Unknown error');
+          }
+        } catch (err) {
+          error.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Notify Me';
+        }
+      });
+    })();
 
     // Glow intensity (shared)
     const glowSlider = document.getElementById('glowSlider');
