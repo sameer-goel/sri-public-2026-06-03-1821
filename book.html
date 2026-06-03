@@ -74,6 +74,19 @@
   <noscript>
     <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
+  <script>
+    // Pre-paint: apply saved theme + glow before first render (no flash).
+    (function () {
+      try {
+        var t = localStorage.getItem('oss-theme') || 'divine';
+        document.documentElement.setAttribute('data-theme', t);
+        var g = localStorage.getItem('oss-glow');
+        document.documentElement.style.setProperty('--glow-intensity', ((g !== null ? g : 50) / 100));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'divine');
+      }
+    })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -339,60 +352,9 @@
       });
     }
 
-    // Theme controller (shared across pages via localStorage)
-    const themeNames = {
-      dark: 'Mystic Dark', light: 'Sacred Light', forest: 'Forest Temple',
-      ocean: 'Ocean Depth', rose: 'Rose Quartz', sand: 'Desert Sand', divine: 'Divine Lights'
-    };
-    const panel = document.getElementById('themePanel');
-    const backdrop = document.getElementById('tpBackdrop');
-    const trigger = document.getElementById('atmosphereTrigger');
-    const closeBtn = document.getElementById('themePanelClose');
-    const presetsEl = document.getElementById('themePresets');
-    const activeNameEl = document.getElementById('activeThemeName');
-
-    function applyTheme(name) {
-      document.documentElement.setAttribute('data-theme', name);
-      localStorage.setItem('oss-theme', name);
-      activeNameEl.textContent = themeNames[name] || name;
-      presetsEl.querySelectorAll('.tp__preset').forEach(b => {
-        b.classList.toggle('tp__preset--active', b.dataset.theme === name);
-      });
-    }
-    function openPanel() {
-      panel.classList.add('tp--open');
-      backdrop.classList.add('tp__backdrop--open');
-      trigger.classList.add('atmosphere-trigger--open');
-    }
-    function closePanel() {
-      panel.classList.remove('tp--open');
-      backdrop.classList.remove('tp__backdrop--open');
-      trigger.classList.remove('atmosphere-trigger--open');
-    }
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      panel.classList.contains('tp--open') ? closePanel() : openPanel();
-    });
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-    presetsEl.querySelectorAll('.tp__preset').forEach(b => {
-      b.addEventListener('click', () => applyTheme(b.dataset.theme));
-    });
-    applyTheme(localStorage.getItem('oss-theme') || 'divine');
-
-    // Glow intensity (shared)
-    const glowSlider = document.getElementById('glowSlider');
-    const glowVal = document.getElementById('glowVal');
-    const savedGlow = localStorage.getItem('oss-glow');
-    glowSlider.value = savedGlow !== null ? savedGlow : 50;
-    document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
-    glowVal.textContent = glowSlider.value + '%';
-    glowSlider.addEventListener('input', () => {
-      document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
-      glowVal.textContent = glowSlider.value + '%';
-      localStorage.setItem('oss-glow', glowSlider.value);
-    });
+    // Theme controller + glow + settings panel: see shared theme.js
   </script>
+  <script src="theme.js" defer></script>
 </body>
 
 </html>
