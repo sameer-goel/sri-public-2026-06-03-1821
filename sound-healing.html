@@ -168,9 +168,8 @@
         </div>
         <div class="split__media">
           <div class="video-wrap">
-            <div class="yt-thumb" role="button" tabindex="0" aria-label="Play Sound Healing video"
-              onclick="this.innerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/HXoFEyWIdmo?autoplay=1&rel=0\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;height:100%;border:none;border-radius:16px\'></iframe>';this.style.cursor='default'"
-              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+            <div class="yt-thumb"
+              onclick="this.innerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/HXoFEyWIdmo?autoplay=1&rel=0\' allow=\'autoplay;encrypted-media\' allowfullscreen style=\'width:100%;height:100%;border:none;border-radius:16px\'></iframe>';this.style.cursor='default'">
               <img src="https://img.youtube.com/vi/HXoFEyWIdmo/hqdefault.jpg" alt="Sound Healing Video">
               <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
@@ -676,29 +675,25 @@
     // Sticky header
     const header = document.getElementById('header');
     let lastY = 0;
-    if (header) {
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('header--scrolled', window.scrollY > 50);
-        header.classList.toggle('header--hidden', window.scrollY > lastY && window.scrollY > 400);
-        lastY = window.scrollY;
-      });
-    }
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 50);
+      header.classList.toggle('header--hidden', window.scrollY > lastY && window.scrollY > 400);
+      lastY = window.scrollY;
+    });
 
     // Mobile menu
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav__links--open');
-        burger.classList.toggle('burger--open');
-        document.body.classList.toggle('no-scroll');
-      });
-      document.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
-        navLinks.classList.remove('nav__links--open');
-        burger.classList.remove('burger--open');
-        document.body.classList.remove('no-scroll');
-      }));
-    }
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+      burger.classList.toggle('burger--open');
+      document.body.classList.toggle('no-scroll');
+    });
+    document.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
+      navLinks.classList.remove('nav__links--open');
+      burger.classList.remove('burger--open');
+      document.body.classList.remove('no-scroll');
+    }));
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
