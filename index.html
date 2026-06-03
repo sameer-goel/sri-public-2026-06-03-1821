@@ -303,43 +303,9 @@
   <!-- SCRIPTS -->
   <script src="portal.js"></script>
   <script>
-
-    // Sticky header
-    const header = document.getElementById('header');
-    let lastY = 0;
-    if (header) {
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('header--scrolled', window.scrollY > 50);
-        header.classList.toggle('header--hidden', window.scrollY > lastY && window.scrollY > 400);
-        lastY = window.scrollY;
-      });
-    }
-
-    // Mobile menu
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav__links--open');
-        burger.classList.toggle('burger--open');
-        document.body.classList.toggle('no-scroll');
-      });
-      document.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
-        navLinks.classList.remove('nav__links--open');
-        burger.classList.remove('burger--open');
-        document.body.classList.remove('no-scroll');
-      }));
-    }
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-
-    // Theme controller + glow + settings panel: see shared theme.js (loaded with defer).
-    // Portal feature toggles below are index-only and stay inline.
+    // Portal feature toggles are index-only and stay inline.
+    // Sticky header, mobile menu, scroll reveal, and form submit: see site.js.
+    // Theme controller + glow + settings panel: see theme.js.
     const portalToggle = document.getElementById('portalToggle');
     const replayBtn = document.getElementById('replayPortal');
 
@@ -356,38 +322,8 @@
         window.location.reload();
       });
     }
-
-
-    // Contact form (AJAX submit)
-    const contactForm = document.querySelector('.form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = this.querySelector('button[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        fetch(this.action, {
-          method: 'POST',
-          body: new FormData(this),
-          headers: { 'Accept': 'application/json' }
-        }).then(r => {
-          if (r.ok) {
-            this.querySelector('.form__fields').style.display = 'none';
-            this.querySelector('.form__success').style.display = 'flex';
-            this.reset();
-          } else {
-            btn.textContent = 'Error - try again';
-            btn.disabled = false;
-          }
-        }).catch(() => {
-          btn.textContent = 'Error - try again';
-          btn.disabled = false;
-        });
-      });
-    }
-
-    // Glow intensity + settings panel: see shared theme.js
   </script>
+  <script src="site.js" defer></script>
   <script src="theme.js" defer></script>
 </body>
 
