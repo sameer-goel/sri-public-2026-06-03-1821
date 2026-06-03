@@ -1091,13 +1091,6 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   .program__list--inline { columns: 1; }
   .nav__links { gap: 20px; margin-left: 28px; }
   .nav__link { font-size: 13px; }
-
-  /* Distance Healing: release the fixed-height layout below desktop so the
-     stacked/2-column cards can't overflow into the next section. */
-  #distance { height: auto; padding: var(--space-2xl) 0; }
-  #distance .container { height: auto; display: block; }
-  #distance .section-header { flex: none; margin-bottom: var(--space-xl); }
-  #distance .cards { flex: none; grid-template-columns: repeat(2, 1fr); margin-bottom: 0; }
 }
 
 @media (max-width: 768px) {
