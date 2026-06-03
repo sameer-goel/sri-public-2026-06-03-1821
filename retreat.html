@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retreat — Om Sacred Space</title>
+  <meta name="description" content="Our sacred retreat is coming soon. Join the early signup to be the first to know.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="header header--scrolled" id="header">
+    <div class="header-bg"></div>
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <div class="logo-square">
+          <div class="logo-square__border"></div>
+          <div class="logo-square__border logo-square__border--inner"></div>
+          <span class="om">ॐ</span>
+        </div>
+        <div class="logo-text">
+          <span>SACRED</span>
+          <span>SPACE</span>
+        </div>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" class="nav__link">Sound Healing</a>
+        <a href="book.html" class="nav__link">Sri Yantra Guidebook</a>
+        <a href="retreat.html" class="nav__link nav__link--active">Sacred Retreat</a>
+        <a href="shop.html" class="nav__link">Sacred Shop</a>
+      </div>
+      <button class="atmosphere-trigger" id="atmosphereTrigger" aria-label="Personalize atmosphere"
+        title="Atmosphere Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+          <path d="M18.36 5.64a9 9 0 11-12.72 0M12 8a4 4 0 100 8 4 4 0 000-8z" opacity="0.5" />
+        </svg>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <!-- COMING SOON -->
+  <main class="coming-soon">
+    <div class="coming-soon__bg">
+      <img src="images/retreat-image.png" alt="Sacred retreat setting" loading="eager">
+      <div class="coming-soon__bg-overlay"></div>
+    </div>
+    <div class="container coming-soon__inner reveal revealed">
+      <p class="eyebrow">A Sacred Gathering</p>
+      <h1>The Retreat is <em>Coming Soon</em></h1>
+      <p class="coming-soon__sub">An immersive journey of sound, stillness, and transformation is taking shape. Be the
+        first to receive the dates, location, and early-bird invitation.</p>
+
+      <form class="signup" action="https://formspree.io/f/xkopkvpp" method="POST">
+        <input type="hidden" name="_subject" value="Retreat early signup — Om Sacred Space">
+        <label for="email" class="signup__label">Join the early signup</label>
+        <div class="signup__row">
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn--primary">Notify Me</button>
+        </div>
+        <p class="signup__success">✦ Thank you. You're on the list.</p>
+      </form>
+
+      <a href="index.html" class="coming-soon__back">← Back to Sound Healing</a>
+    </div>
+  </main>
+
+  <!-- SETTINGS PANEL -->
+  <div class="tp" id="themePanel">
+    <div class="tp__header">
+      <h4>Settings</h4>
+      <button class="tp__close" id="themePanelClose" aria-label="Close settings panel">&times;</button>
+    </div>
+    <div class="tp__section">
+      <p class="tp__label">Presets</p>
+      <div class="tp__presets" id="themePresets">
+        <button class="tp__preset" data-theme="dark">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0c0a1d,#110e2a)"></span>
+          <span>Mystic Dark</span>
+        </button>
+        <button class="tp__preset" data-theme="light">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#faf8f5,#f2efe9)"></span>
+          <span>Sacred Light</span>
+        </button>
+        <button class="tp__preset" data-theme="forest">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0a1a12,#0f2618)"></span>
+          <span>Forest Temple</span>
+        </button>
+        <button class="tp__preset" data-theme="ocean">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0a1520,#0c1e2e)"></span>
+          <span>Ocean Depth</span>
+        </button>
+        <button class="tp__preset" data-theme="rose">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#1d0f18,#2a1520)"></span>
+          <span>Rose Quartz</span>
+        </button>
+        <button class="tp__preset" data-theme="sand">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#f5f0e8,#ebe4d8)"></span>
+          <span>Desert Sand</span>
+        </button>
+        <button class="tp__preset" data-theme="divine">
+          <span class="tp__swatch"
+            style="background:linear-gradient(135deg,#0d0b1a,#1a1030);box-shadow:0 0 8px rgba(180,120,255,0.4),0 0 8px rgba(100,200,255,0.3)"></span>
+          <span>Divine Lights</span>
+        </button>
+      </div>
+    </div>
+    <div class="tp__section">
+      <p class="tp__label">Active: <strong id="activeThemeName">Mystic Dark</strong></p>
+    </div>
+    <div class="tp__section" id="glowSection">
+      <p class="tp__label">Glow Intensity</p>
+      <div class="tp__slider-wrap">
+        <input type="range" class="tp__slider" id="glowSlider" min="0" max="100" value="100">
+        <span class="tp__slider-val" id="glowVal">100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="tp__backdrop" id="tpBackdrop"></div>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    if (burger) {
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav__links--open');
+        burger.classList.toggle('burger--open');
+        document.body.classList.toggle('no-scroll');
+      });
+    }
+
+    const form = document.querySelector('.signup');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } })
+          .then(r => {
+            if (r.ok) {
+              this.querySelector('.signup__row').style.display = 'none';
+              this.querySelector('.signup__success').style.display = 'block';
+              this.reset();
+            } else { btn.textContent = 'Error - try again'; btn.disabled = false; }
+          }).catch(() => { btn.textContent = 'Error - try again'; btn.disabled = false; });
+      });
+    }
+
+    // Theme controller (shared across pages via localStorage)
+    const themeNames = {
+      dark: 'Mystic Dark', light: 'Sacred Light', forest: 'Forest Temple',
+      ocean: 'Ocean Depth', rose: 'Rose Quartz', sand: 'Desert Sand', divine: 'Divine Lights'
+    };
+    const panel = document.getElementById('themePanel');
+    const backdrop = document.getElementById('tpBackdrop');
+    const trigger = document.getElementById('atmosphereTrigger');
+    const closeBtn = document.getElementById('themePanelClose');
+    const presetsEl = document.getElementById('themePresets');
+    const activeNameEl = document.getElementById('activeThemeName');
+
+    function applyTheme(name) {
+      document.documentElement.setAttribute('data-theme', name);
+      localStorage.setItem('oss-theme', name);
+      activeNameEl.textContent = themeNames[name] || name;
+      presetsEl.querySelectorAll('.tp__preset').forEach(b => {
+        b.classList.toggle('tp__preset--active', b.dataset.theme === name);
+      });
+    }
+    function openPanel() {
+      panel.classList.add('tp--open');
+      backdrop.classList.add('tp__backdrop--open');
+      trigger.classList.add('atmosphere-trigger--open');
+    }
+    function closePanel() {
+      panel.classList.remove('tp--open');
+      backdrop.classList.remove('tp__backdrop--open');
+      trigger.classList.remove('atmosphere-trigger--open');
+    }
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('tp--open') ? closePanel() : openPanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+    backdrop.addEventListener('click', closePanel);
+    presetsEl.querySelectorAll('.tp__preset').forEach(b => {
+      b.addEventListener('click', () => applyTheme(b.dataset.theme));
+    });
+    applyTheme(localStorage.getItem('oss-theme') || 'divine');
+
+    // Glow intensity (shared)
+    const glowSlider = document.getElementById('glowSlider');
+    const glowVal = document.getElementById('glowVal');
+    const savedGlow = localStorage.getItem('oss-glow');
+    glowSlider.value = savedGlow !== null ? savedGlow : 50;
+    document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
+    glowVal.textContent = glowSlider.value + '%';
+    glowSlider.addEventListener('input', () => {
+      document.documentElement.style.setProperty('--glow-intensity', (glowSlider.value / 100));
+      glowVal.textContent = glowSlider.value + '%';
+      localStorage.setItem('oss-glow', glowSlider.value);
+    });
+  </script>
+</body>
+
+</html>
