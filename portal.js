@@ -200,10 +200,10 @@
   const portalViewed = sessionStorage.getItem('portal-viewed') === 'true';
   const portalEnabled = localStorage.getItem('portal-enabled') !== 'false';
   if (!portalEnabled || portalViewed) {
-    // No portal — hide the re-entry overlay immediately
+    // No portal - hide the re-entry overlay immediately
     reentry.classList.add('home-reentry--hidden');
   } else {
-    // Portal is playing — watch for it to finish, then hide re-entry
+    // Portal is playing - watch for it to finish, then hide re-entry
     const obs = new MutationObserver(() => {
       if (sessionStorage.getItem('portal-viewed') === 'true') {
         reentry.classList.add('home-reentry--hidden');
@@ -295,7 +295,7 @@
     animating = true;
 
     // 1. Show the dark overlay instantly by removing the hidden class
-    //    (no transition when showing — transition only applies when hiding)
+    //    (no transition when showing - transition only applies when hiding)
     reentry.style.transition = 'none';
     reentry.classList.remove('home-reentry--hidden');
     reentry.offsetHeight; // force repaint
