@@ -89,6 +89,7 @@
 
       <form class="signup" action="https://formspree.io/f/xkopkvpp" method="POST">
         <input type="hidden" name="_subject" value="Retreat early signup - Om Sacred Space">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <label for="email" class="signup__label">Join the early signup</label>
         <div class="signup__row">
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
@@ -188,37 +189,8 @@
   </div>
   <div class="tp__backdrop" id="tpBackdrop"></div>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    if (burger) {
-      burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav__links--open');
-        burger.classList.toggle('burger--open');
-        document.body.classList.toggle('no-scroll');
-      });
-    }
-
-    const form = document.querySelector('.signup');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = this.querySelector('button');
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } })
-          .then(r => {
-            if (r.ok) {
-              this.querySelector('.signup__row').style.display = 'none';
-              this.querySelector('.signup__success').style.display = 'block';
-              this.reset();
-            } else { btn.textContent = 'Error - try again'; btn.disabled = false; }
-          }).catch(() => { btn.textContent = 'Error - try again'; btn.disabled = false; });
-      });
-    }
-
-    // Theme controller + glow + settings panel: see shared theme.js
-  </script>
+  <!-- Mobile menu, scroll reveal, signup form submit: see site.js. Theme: see theme.js. -->
+  <script src="site.js" defer></script>
   <script src="theme.js" defer></script>
 </body>
 
