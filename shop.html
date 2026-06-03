@@ -61,31 +61,7 @@
         <p class="shop-hero__sub">100% organic cotton. Circular economy. Printed with intention, shipped with care.</p>
       </div>
 
-      <div class="shop-grid">
-
-        <a href="https://sacredshop.teemill.com/product/api-1MY6Ep2rRNqhYUcVRcqWOMZt" target="_blank" rel="noopener" class="shop-card reveal revealed">
-          <div class="shop-card__img">
-            <img src="https://images.podos.io/6879c67277441eeaad5ba87883560386bbf2303d73f46b42.png" alt="Sri Yantra Sacred Geometry Tee" loading="lazy">
-            <span class="shop-card__badge">Organic</span>
-          </div>
-          <div class="shop-card__body">
-            <h3>Sri Yantra Sacred Geometry Tee</h3>
-            <p>Sacred geometry on 100% organic cotton. Black or White.</p>
-            <span class="shop-card__price">GBP 19</span>
-          </div>
-        </a>
-
-        <a href="https://sacredshop.teemill.com/product/api-mMMMZ1lMc23Ay7NEmBp4x2be" target="_blank" rel="noopener" class="shop-card reveal revealed">
-          <div class="shop-card__img">
-            <img src="https://images.podos.io/49fdfc06a83a70d6669f5835276cf0bb7ca74f0ac8a1fe2d.png" alt="Om Symbol Classic Tee" loading="lazy">
-            <span class="shop-card__badge">Organic</span>
-          </div>
-          <div class="shop-card__body">
-            <h3>Om Symbol Classic Tee</h3>
-            <p>The eternal Om. Minimalist design, maximum resonance.</p>
-            <span class="shop-card__price">GBP 19</span>
-          </div>
-        </a>
+      <div class="shop-grid shop-grid--single">
 
         <a href="https://sacredshop.teemill.com/product/api-69587on1IoCRIWqe6LhiaoRc" target="_blank" rel="noopener" class="shop-card reveal revealed">
           <div class="shop-card__img">
@@ -95,42 +71,6 @@
           <div class="shop-card__body">
             <h3>Lotus Bloom Meditation Tee</h3>
             <p>The lotus rises from the mud. Pure organic cotton.</p>
-            <span class="shop-card__price">GBP 19</span>
-          </div>
-        </a>
-
-        <a href="https://sacredshop.teemill.com/product/api-fSEzcAPDDtDfBrEthxRkEKRZ" target="_blank" rel="noopener" class="shop-card reveal revealed">
-          <div class="shop-card__img">
-            <img src="https://images.podos.io/9a205c6f3d2dfe202b68cd2f4e53062b2b288959c117dfb1.png" alt="Seven Chakras Alignment Tee" loading="lazy">
-            <span class="shop-card__badge">Organic</span>
-          </div>
-          <div class="shop-card__body">
-            <h3>Seven Chakras Alignment Tee</h3>
-            <p>Crown to root. All seven energy centers aligned.</p>
-            <span class="shop-card__price">GBP 19</span>
-          </div>
-        </a>
-
-        <a href="https://sacredshop.teemill.com/product/api-MtVRyHeeS1N7HkLe1bDJeTJ7" target="_blank" rel="noopener" class="shop-card reveal revealed">
-          <div class="shop-card__img">
-            <img src="https://images.podos.io/55519ebe86b24ed40d1ec339cc36d9819c1d67dcfb6edc23.png" alt="Sacred Mandala Tee" loading="lazy">
-            <span class="shop-card__badge">Organic</span>
-          </div>
-          <div class="shop-card__body">
-            <h3>Sacred Mandala Tee</h3>
-            <p>Infinite patterns. Meditative geometry on organic cotton.</p>
-            <span class="shop-card__price">GBP 19</span>
-          </div>
-        </a>
-
-        <a href="https://sacredshop.teemill.com/product/api-hk9CGQVKigVMvOJcIJrLrEkt" target="_blank" rel="noopener" class="shop-card reveal revealed">
-          <div class="shop-card__img">
-            <img src="https://images.podos.io/0b039c0bc6f0b981125c4366f95747e17357b91427851079.png" alt="Om Sacred Space Signature Tee" loading="lazy">
-            <span class="shop-card__badge">Signature</span>
-          </div>
-          <div class="shop-card__body">
-            <h3>Om Sacred Space Signature Tee</h3>
-            <p>Our signature Sri Yantra design. Limited edition white.</p>
             <span class="shop-card__price">GBP 19</span>
           </div>
         </a>
@@ -176,6 +116,10 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2rem;
       margin-bottom: 4rem;
+    }
+    .shop-grid--single {
+      grid-template-columns: minmax(280px, 380px);
+      justify-content: center;
     }
 
     .shop-card {
