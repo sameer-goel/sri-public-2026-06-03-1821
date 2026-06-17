@@ -46,9 +46,9 @@
       'program-spiritual-awakening': 'https://buy.stripe.com/fZu28k5oN9MObAU3wi9MY0o',
       'program-deep-healing': 'https://buy.stripe.com/fZu00cg3r3oq7kEeaW9MY0p',
       'program-custom': 'https://buy.stripe.com/eVq7sE6sRbUWdJ2eaW9MY0q',
-      'donate-9': 'https://buy.stripe.com/14AcMYcRfe3420k5Eq9MY0r',
-      'donate-49': 'https://buy.stripe.com/8x26oA04t9MO0Wg8QC9MY0s',
-      'donate-99': 'https://buy.stripe.com/14A14gaJ74subAU7My9MY0t',
+      'donate-9': 'https://buy.stripe.com/14AeV6dVj7EGcEY8QC9MY0v',
+      'donate-49': 'https://buy.stripe.com/9B6eV6aJ76AC6gAc2O9MY0w',
+      'donate-99': 'https://buy.stripe.com/8x28wI04tbUW6gAff09MY0x',
       'donate-custom': 'https://buy.stripe.com/3cI3co04t5wy48sd6S9MY0u'
     },
     test: {
@@ -66,9 +66,9 @@
       'program-spiritual-awakening': 'https://buy.stripe.com/test_cNi4gz1Iyc8t6TNcENfEk0d',
       'program-deep-healing': 'https://buy.stripe.com/test_7sYeVddrgdcx2Dx9sBfEk0e',
       'program-custom': 'https://buy.stripe.com/test_bJe4gz4UKgoJba3fQZfEk0g',
-      'donate-9': 'https://buy.stripe.com/test_8x2aEXfzo7Sdba38oxfEk0j',
-      'donate-49': 'https://buy.stripe.com/test_9B6bJ186Wc8t5PJcENfEk0k',
-      'donate-99': 'https://buy.stripe.com/test_14AfZh0Eu5K5fqjdIRfEk0l',
+      'donate-9': 'https://buy.stripe.com/test_6oUbJ1bj83BXce7dIRfEk0n',
+      'donate-49': 'https://buy.stripe.com/test_3cI8wPevkfkFdibbAJfEk0o',
+      'donate-99': 'https://buy.stripe.com/test_4gMcN51Iy7Sd91VbAJfEk0p',
       'donate-custom': 'https://buy.stripe.com/test_bJeaEXfzoc8ta5Z9sBfEk0m'
     }
   };
@@ -148,19 +148,19 @@
       priceMinor: 22200, currency: 'EUR', unit: '5 sessions', group: 'Programs'
     }),
     'donate-9': p({
-      id: 'donate-9', name: 'Donation \u2014 9 EUR', heading: 'Donation 9',
+      id: 'donate-9', name: 'Donation 9 EUR', heading: 'Donation 9',
       priceMinor: 900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
     }),
     'donate-49': p({
-      id: 'donate-49', name: 'Donation \u2014 49 EUR', heading: 'Donation 49',
+      id: 'donate-49', name: 'Donation 49 EUR', heading: 'Donation 49',
       priceMinor: 4900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
     }),
     'donate-99': p({
-      id: 'donate-99', name: 'Donation \u2014 99 EUR', heading: 'Donation 99',
+      id: 'donate-99', name: 'Donation 99 EUR', heading: 'Donation 99',
       priceMinor: 9900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
     }),
     'donate-custom': p({
-      id: 'donate-custom', name: 'Donation \u2014 custom amount', heading: 'Donation custom',
+      id: 'donate-custom', name: 'Custom Donation', heading: 'Donation custom',
       priceMinor: 100, currency: 'EUR', unit: 'choose your gift', group: 'Donation',
       customAmount: true, customMinMinor: 100, customPresetMinor: 2500
     }),
