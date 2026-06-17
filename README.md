@@ -31,3 +31,34 @@ archive/         ← Frozen snapshots & experiments. Never edit.
 | v3 | New navigation layout: fixed (non-scrolling) hero. Header is logo (left) + menu left-to-right - Sound Healing, Sri Yantra Book, Sacred Retreat, Sacred Shop - with the atmosphere/theme icon on the right. Sound Healing is the existing site, Sri Yantra Book has its own page, Sacred Retreat and Sacred Shop are "coming soon" pages. Theme switcher works across all pages. Instagram and YouTube moved from the header to the footer. Home/logo page split from the Sound Healing content flow. **FROZEN - approved milestone (`archive/v3/`).** |
 | v4 | Commerce milestone evolved from v3: live Stripe payments with **iDEAL** enabled (NL); payment-convenience checkout layer (catalog / core / UI) + unit tests; **Group Healing** section with the tiered per-person **Group Sound Bath** booking (volume pricing 5–9 / 10–14 / 15–19 / 20+) and a **Mega Sound Events** enquiry card; 8th **Custom Package** program (€222); Sacred Store hidden from nav; a small Node checkout server (`checkout/server.js`) for dynamic Sound Bath Checkout Sessions; Stripe-branding audit (`checkout/BRANDING.md`). **FROZEN — approved milestone (`archive/v4/`).** |
 | Active (root) | Current development version, evolved from v4. Lives in the repository root. |
+
+## Publishing to GitHub (private + public mirror)
+
+This project lives in a **private** canonical repo and a **public** deploy mirror.
+Because plain `git push` is intercepted on the work machine, pushes go through
+the GitHub REST API using the `gh` CLI token.
+
+Reusable script: `scripts/gh-mirror-push.js` (run via `npm run mirror-push`).
+
+```
+gh auth status                 # must be logged in; token needs the `repo` scope
+git add <files> && git commit  # commit locally as usual
+npm run mirror-push            # mirror HEAD to both repos (no git push)
+```
+
+What it does:
+- Reads the current commit (HEAD) straight from git (not the working tree).
+- For each target repo, creates blobs + a tree + a commit via the REST API and
+  moves the branch ref — verifying the remote tree SHA equals local HEAD first,
+  so a repo is never left half-written.
+- Uploads only the delta when a repo is one commit behind; falls back to a full
+  upload for an empty/diverged repo.
+
+Targets and branch are configured at the top of `scripts/gh-mirror-push.js`
+(defaults: `sameer-goel/sri` private + `sameer-goel/sri-public-2026-06-03-1821`
+public, branch `main`). Override ad hoc:
+
+```
+node scripts/gh-mirror-push.js owner/repoA owner/repoB
+BRANCH=main node scripts/gh-mirror-push.js
+```

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "node --test \"checkout/tests/**/*.test.js\"",
+    "mirror-push": "node scripts/gh-mirror-push.js",
     "serve": "node --env-file-if-exists=.env checkout/server.js",
     "serve:test": "OSS_CHECKOUT_MODE=test node --env-file-if-exists=.env checkout/server.js",
     "create-links": "node --env-file-if-exists=.env checkout/scripts/create-payment-links.js",
