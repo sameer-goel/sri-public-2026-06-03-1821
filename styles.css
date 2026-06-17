@@ -1323,7 +1323,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   .about-page .split__text p { font-size: 16px; }
 }
 
-/* --- ABOUT LETTER (dark paper page, warm ink) --- */
+/* --- ABOUT LETTER (reads like a written letter, merged with the active theme) --- */
 .letter {
   padding-top: calc(var(--space-2xl) + 40px);
   background:
@@ -1331,32 +1331,27 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
     var(--bg-deep);
 }
 .letter__sheet {
-  --ink: #e8e1d2;
   max-width: 860px;
   margin: 0 auto;
-  color: var(--ink);
-  background-color: #16131f;
-  background-image:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 40px,
-      rgba(255, 255, 255, 0.05) 40px,
-      rgba(255, 255, 255, 0.05) 41px
-    ),
-    radial-gradient(130% 80% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 60%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-  background-size: auto, auto, 140px 140px;
+  background-color: var(--bg-cream);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 40px,
+    rgba(var(--shadow-rgb), 0.06) 40px,
+    rgba(var(--shadow-rgb), 0.06) 41px
+  );
+  color: var(--text-dark);
   padding: clamp(44px, 6vw, 92px) clamp(28px, 6vw, 76px);
   border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), inset 0 0 140px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(var(--shadow-rgb), 0.08);
+  box-shadow: 0 40px 90px rgba(var(--shadow-rgb), 0.30);
 }
 .letter__sheet p {
   font-family: var(--font-heading);
   font-size: 21px;
   line-height: 1.95;
-  color: var(--ink);
+  color: var(--text-dark);
   margin-bottom: 1.25em;
   text-wrap: pretty;
 }
@@ -1379,7 +1374,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: clamp(32px, 4.5vw, 50px);
-  color: #f2ede1;
+  color: var(--text-dark);
   text-align: center;
   text-wrap: balance;
   margin-bottom: var(--space-lg);
