@@ -45,7 +45,11 @@
       'program-couple-advanced': 'https://buy.stripe.com/28E6oAcRf8IK8oIc2O9MY0n',
       'program-spiritual-awakening': 'https://buy.stripe.com/fZu28k5oN9MObAU3wi9MY0o',
       'program-deep-healing': 'https://buy.stripe.com/fZu00cg3r3oq7kEeaW9MY0p',
-      'program-custom': 'https://buy.stripe.com/eVq7sE6sRbUWdJ2eaW9MY0q'
+      'program-custom': 'https://buy.stripe.com/eVq7sE6sRbUWdJ2eaW9MY0q',
+      'donate-9': 'https://buy.stripe.com/14AcMYcRfe3420k5Eq9MY0r',
+      'donate-49': 'https://buy.stripe.com/8x26oA04t9MO0Wg8QC9MY0s',
+      'donate-99': 'https://buy.stripe.com/14A14gaJ74subAU7My9MY0t',
+      'donate-custom': 'https://buy.stripe.com/3cI3co04t5wy48sd6S9MY0u'
     },
     test: {
       'session-foundations': 'https://buy.stripe.com/test_9B64gzbj8a0l91V7ktfEk02',
@@ -61,7 +65,11 @@
       'program-couple-advanced': 'https://buy.stripe.com/test_28E9AT9b08Wh1zteMVfEk0c',
       'program-spiritual-awakening': 'https://buy.stripe.com/test_cNi4gz1Iyc8t6TNcENfEk0d',
       'program-deep-healing': 'https://buy.stripe.com/test_7sYeVddrgdcx2Dx9sBfEk0e',
-      'program-custom': 'https://buy.stripe.com/test_bJe4gz4UKgoJba3fQZfEk0g'
+      'program-custom': 'https://buy.stripe.com/test_bJe4gz4UKgoJba3fQZfEk0g',
+      'donate-9': 'https://buy.stripe.com/test_8x2aEXfzo7Sdba38oxfEk0j',
+      'donate-49': 'https://buy.stripe.com/test_9B6bJ186Wc8t5PJcENfEk0k',
+      'donate-99': 'https://buy.stripe.com/test_14AfZh0Eu5K5fqjdIRfEk0l',
+      'donate-custom': 'https://buy.stripe.com/test_bJeaEXfzoc8ta5Z9sBfEk0m'
     }
   };
 
@@ -138,6 +146,23 @@
     'program-custom': p({
       id: 'program-custom', name: 'Custom Package', heading: 'Custom Package',
       priceMinor: 22200, currency: 'EUR', unit: '5 sessions', group: 'Programs'
+    }),
+    'donate-9': p({
+      id: 'donate-9', name: 'Donation \u2014 9 EUR', heading: 'Donation 9',
+      priceMinor: 900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
+    }),
+    'donate-49': p({
+      id: 'donate-49', name: 'Donation \u2014 49 EUR', heading: 'Donation 49',
+      priceMinor: 4900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
+    }),
+    'donate-99': p({
+      id: 'donate-99', name: 'Donation \u2014 99 EUR', heading: 'Donation 99',
+      priceMinor: 9900, currency: 'EUR', unit: 'one-time gift', group: 'Donation'
+    }),
+    'donate-custom': p({
+      id: 'donate-custom', name: 'Donation \u2014 custom amount', heading: 'Donation custom',
+      priceMinor: 100, currency: 'EUR', unit: 'choose your gift', group: 'Donation',
+      customAmount: true, customMinMinor: 100, customPresetMinor: 2500
     }),
     'shop-lotus-tee': p({
       id: 'shop-lotus-tee', name: 'Lotus Bloom Meditation Tee', heading: 'Lotus Bloom Meditation Tee',

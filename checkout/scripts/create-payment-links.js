@@ -108,21 +108,37 @@ function paramsFor(product) {
   return body;
 }
 
-async function createLink(product) {
-  const body = new URLSearchParams(paramsFor(product));
-  const res = await fetch(API, {
+async function stripe(url, params) {
+  const res = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + KEY,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body
+    headers: { 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(params)
   });
   const json = await res.json();
-  if (!res.ok) {
-    throw new Error((json.error && json.error.message) || ('HTTP ' + res.status));
+  if (!res.ok) throw new Error((json.error && json.error.message) || ('HTTP ' + res.status));
+  return json;
+}
+
+async function createLink(product) {
+  // "Pay what you want" donations: Payment Links can't take an inline custom
+  // amount, so mint a Price with custom_unit_amount and reference it by id.
+  if (product.customAmount) {
+    const price = await stripe('https://api.stripe.com/v1/prices', {
+      'currency': product.currency.toLowerCase(),
+      'product_data[name]': product.name,
+      'custom_unit_amount[enabled]': 'true',
+      'custom_unit_amount[minimum]': String(product.customMinMinor || 100),
+      ...(product.customPresetMinor ? { 'custom_unit_amount[preset]': String(product.customPresetMinor) } : {})
+    });
+    const link = await stripe(API, {
+      'line_items[0][price]': price.id,
+      'line_items[0][quantity]': '1',
+      'metadata[product_id]': product.id
+    });
+    return link.url;
   }
-  return json.url;
+  const link = await stripe(API, paramsFor(product));
+  return link.url;
 }
 
 // --- patch a single PAYMENT_LINKS entry in catalog.js, scoped to a mode ----

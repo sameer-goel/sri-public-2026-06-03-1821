@@ -6,7 +6,7 @@
 // Load order:  catalog.js -> checkout-core.js -> checkout-ui.js  (defer)
 //
 // Philosophy: hassle-free. No separate "Book" button. The entire priced card
-// is the click target — clicking it opens that service's Stripe-hosted page
+// is the click target - clicking it opens that service's Stripe-hosted page
 // (with full details) in a new tab. Items without a configured link fall back
 // to a prefilled email reservation, so nothing is ever a dead end.
 // ============================================

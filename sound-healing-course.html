@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om Sacred Space - Sound Healing & Energy Work</title>
-  <meta name="description"
-    content="Discover the power of chakra energizing, sacred sound baths, and energy healing at Om Sacred Space.">
-  <link rel="canonical" href="https://omsacredspace.com/">
-  <meta property="og:title" content="Om Sacred Space - Sound Healing & Energy Work">
-  <meta property="og:description" content="Discover the power of chakra energizing, sacred sound baths, and energy healing at Om Sacred Space.">
-  <meta property="og:url" content="https://omsacredspace.com/">
+  <title>Sound Healing Course - Om Sacred Space</title>
+  <meta name="description" content="A guided Sound Healing Course is coming soon. Join the notify list to be the first to know when enrollment opens.">
+  <link rel="canonical" href="https://omsacredspace.com/sound-healing-course.html">
+  <meta property="og:title" content="Sound Healing Course - Om Sacred Space">
+  <meta property="og:description" content="A guided Sound Healing Course is coming soon. Join the notify list to be the first to know.">
+  <meta property="og:url" content="https://omsacredspace.com/sound-healing-course.html">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://omsacredspace.com/images/hero-bg.png">
+  <meta property="og:image" content="https://omsacredspace.com/images/session.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +18,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="portal.css">
+  <link rel="stylesheet" href="styles.css?v=5">
   <noscript>
     <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
@@ -38,108 +35,10 @@
       }
     })();
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://omsacredspace.com/#organization",
-        "name": "Om Sacred Space",
-        "url": "https://omsacredspace.com/",
-        "description": "Sound healing, energy work, sacred sound baths, and chakra energizing with Suhana.",
-        "logo": "https://omsacredspace.com/images/favicon.png",
-        "email": "contact@omsacredspace.com",
-        "sameAs": [
-          "https://www.instagram.com/healingsuhana",
-          "https://www.youtube.com/@healingsuhana/videos"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://omsacredspace.com/#website",
-        "url": "https://omsacredspace.com/",
-        "name": "Om Sacred Space",
-        "publisher": { "@id": "https://omsacredspace.com/#organization" }
-      }
-    ]
-  }
-  </script>
 </head>
-
 <body>
-
-  <!-- ========== PORTAL: SPLASH ========== -->
-  <div class="portal-splash" id="portalSplash">
-    <div class="portal-splash__om">ॐ</div>
-    <p class="portal-splash__text">Enter the Sacred Space</p>
-    <p class="portal-splash__hint">tap anywhere to begin</p>
-  </div>
-
-  <!-- ========== PORTAL: TUNNEL ========== -->
-  <div class="portal-tunnel" id="portalTunnel">
-    <canvas class="portal-tunnel__canvas" id="tunnelCanvas"></canvas>
-    <div class="portal-tunnel__rings" id="tunnelRings"></div>
-    <div class="portal-tunnel__flash" id="tunnelFlash"></div>
-    <div class="portal-tunnel__destination">
-      <img class="portal-tunnel__yantra" id="tunnelYantra" src="images/hero-bg.png" alt="Sri Yantra">
-    </div>
-  </div>
-
-  <!-- ========== PORTAL: ARRIVE ========== -->
-  <div class="portal-arrive" id="portalArrive"></div>
-
-  <!-- ========== PORTAL: WELCOME ========== -->
-  <div class="portal-welcome" id="portalWelcome">
-    <div class="welcome-ink welcome-ink--top" id="welcomeTop">
-      <div class="welcome-ink__glow"></div>
-      <div class="welcome-ink__text">Welcome to</div>
-      <svg class="welcome-ink__pen" viewBox="0 0 32 32" fill="none">
-        <path d="M6 26L24 4" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" />
-        <path d="M24 4L28 2L26 6L24 4Z" fill="#c9a96e" />
-        <path d="M6 26L4 30L8 28L6 26Z" fill="#c9a96e" opacity="0.6" />
-        <path d="M7 25L23 5" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" />
-      </svg>
-    </div>
-    <div class="welcome-ink welcome-ink--main" id="welcomeMain">
-      <div class="welcome-ink__glow"></div>
-      <div class="welcome-ink__text"><span class="welcome-om">ॐ</span> Sacred Space</div>
-      <svg class="welcome-ink__pen" viewBox="0 0 32 32" fill="none">
-        <path d="M6 26L24 4" stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round" />
-        <path d="M24 4L28 2L26 6L24 4Z" fill="#c9a96e" />
-        <path d="M6 26L4 30L8 28L6 26Z" fill="#c9a96e" opacity="0.6" />
-        <path d="M7 25L23 5" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" />
-      </svg>
-    </div>
-  </div>
-
-  <!-- ========== HOME RE-ENTRY OVERLAY ========== -->
-  <div class="home-reentry" id="homeReentry">
-    <canvas class="home-reentry__canvas" id="homeReentryCanvas"></canvas>
-    <div class="home-reentry__rings" id="homeReentryRings"></div>
-    <div class="home-reentry__flash" id="homeReentryFlash"></div>
-    <div class="home-reentry__destination">
-      <img class="home-reentry__yantra" id="homeReentryYantra" src="images/hero-bg.png" alt="">
-    </div>
-  </div>
-
-  <!-- ========== SOUND TOGGLE ========== -->
-  <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-    <svg id="soundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round">
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-      <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
-    </svg>
-    <svg id="soundOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" style="display:none">
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-      <line x1="23" y1="9" x2="17" y2="15" />
-      <line x1="17" y1="9" x2="23" y2="15" />
-    </svg>
-  </button>
-
   <!-- NAV -->
-  <header class="header" id="header">
+  <header class="header header--scrolled" id="header">
     <div class="header-bg"></div>
     <nav class="nav container">
       <a href="index.html" class="logo">
@@ -158,7 +57,7 @@
         <a href="book.html" class="nav__link">Sri Yantra Guidebook</a>
         <a href="retreat.html" class="nav__link">Sacred Retreat</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="sound-healing-course.html" class="nav__link">Course</a>
+        <a href="sound-healing-course.html" class="nav__link nav__link--active">Course</a>
         <a href="donate.html" class="nav__link nav__link--cta">Donate</a>
         <!-- Sacred Store temporarily disabled -->
         <!-- <a href="shop.html" class="nav__link">Sacred Store</a> -->
@@ -177,24 +76,31 @@
     </nav>
   </header>
 
-
-  <!-- HERO -->
-  <main>
-  <section class="hero" id="hero">
-    <img class="hero__bg" src="images/hero-image.png" alt="Sacred healing space" loading="eager">
-    <div class="hero__overlay"></div>
-    <div class="hero__ripples">
-      <div class="hero__ripple"></div>
-      <div class="hero__ripple"></div>
-      <div class="hero__ripple"></div>
+  <!-- COMING SOON -->
+  <main class="coming-soon">
+    <div class="coming-soon__bg">
+      <img src="images/session.jpg" alt="A sound healing session in progress" loading="eager">
+      <div class="coming-soon__bg-overlay"></div>
     </div>
-    <div class="container hero__content reveal" style="text-align: center; max-width: 900px;">
-      <h1 class="visually-hidden">Om Sacred Space - Sound Healing &amp; Energy Work</h1>
-      <blockquote class="hero__quote">
-        "Authenticity is the <em>Sacred Space</em> to Bliss."
-      </blockquote>
+    <div class="container coming-soon__inner reveal revealed">
+      <p class="eyebrow">Learn the Practice</p>
+      <h1>Sound Healing Course</h1>
+      <p class="coming-soon__badge">Coming Soon</p>
+      <p class="coming-soon__sub">A guided journey into the art of sound healing - the instruments, the
+        techniques, and the inner practice. Join the notify list to be the first to know when enrollment opens.</p>
+      <form class="signup" action="https://formspree.io/f/xkopkvpp" method="POST">
+        <input type="hidden" name="_subject" value="Sound Healing Course - notify me - Om Sacred Space">
+        <input type="hidden" name="interest" value="Sound Healing Course">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <label for="email" class="signup__label">Notify me when it opens</label>
+        <div class="signup__row">
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn--primary">Notify Me</button>
+        </div>
+        <p class="signup__success">✦ Thank you. You're on the list - we'll be in touch when the course opens.</p>
+      </form>
+      <a href="sound-healing.html" class="coming-soon__back">← Back to Sound Healing</a>
     </div>
-  </section>
   </main>
 
   <!-- FOOTER -->
@@ -237,26 +143,10 @@
       <h4>Settings</h4>
       <button class="tp__close" id="themePanelClose" aria-label="Close settings panel">&times;</button>
     </div>
-
-    <div class="tp__section">
-      <p class="tp__label">Features</p>
-      <label class="tp__toggle">
-        <span style="color: #f0ece4; font-size: 14px;">Tunnel Animation</span>
-        <div class="tp__switch">
-          <input type="checkbox" id="portalToggle" checked aria-label="Toggle tunnel animation feature">
-          <span class="tp__slider-toggle"></span>
-        </div>
-      </label>
-      <p style="font-size: 11px; color: #a8a0b8; margin-top: 8px;">Enable the sacred portal experience on first visit.
-      </p>
-      <button class="btn btn--sm btn--primary" id="replayPortal" style="margin-top: 12px; width: 100%;">Replay Portal
-        Animation</button>
-    </div>
-
     <div class="tp__section">
       <p class="tp__label">Presets</p>
       <div class="tp__presets" id="themePresets">
-        <button class="tp__preset tp__preset--active" data-theme="dark">
+        <button class="tp__preset" data-theme="dark">
           <span class="tp__swatch" style="background:linear-gradient(135deg,#0c0a1d,#110e2a)"></span>
           <span>Mystic Dark</span>
         </button>
@@ -287,12 +177,9 @@
         </button>
       </div>
     </div>
-
-
     <div class="tp__section">
       <p class="tp__label">Active: <strong id="activeThemeName">Mystic Dark</strong></p>
     </div>
-
     <div class="tp__section" id="glowSection">
       <p class="tp__label">Glow Intensity</p>
       <div class="tp__slider-wrap">
@@ -303,32 +190,8 @@
   </div>
   <div class="tp__backdrop" id="tpBackdrop"></div>
 
-
-  <!-- SCRIPTS -->
-  <script src="portal.js"></script>
-  <script>
-    // Portal feature toggles are index-only and stay inline.
-    // Sticky header, mobile menu, scroll reveal, and form submit: see site.js.
-    // Theme controller + glow + settings panel: see theme.js.
-    const portalToggle = document.getElementById('portalToggle');
-    const replayBtn = document.getElementById('replayPortal');
-
-    if (portalToggle) {
-      portalToggle.checked = localStorage.getItem('portal-enabled') !== 'false';
-      portalToggle.addEventListener('change', () => {
-        localStorage.setItem('portal-enabled', portalToggle.checked);
-      });
-    }
-    if (replayBtn) {
-      replayBtn.addEventListener('click', () => {
-        sessionStorage.removeItem('portal-viewed');
-        localStorage.setItem('portal-enabled', 'true');
-        window.location.reload();
-      });
-    }
-  </script>
+  <!-- Mobile menu, scroll reveal, signup form submit: see site.js. Theme: see theme.js. -->
   <script src="site.js" defer></script>
   <script src="theme.js" defer></script>
 </body>
-
 </html>

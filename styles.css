@@ -1295,3 +1295,151 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   .story p { font-size: 16px; }
   .about-cta { flex-direction: column; align-items: stretch; }
 }
+
+/* --- ABOUT STORY: list + uniform body size --- */
+.story__list { margin: 0 0 var(--space-md); }
+.story__list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.8;
+}
+.story__list li::before {
+  content: '\2726';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+}
+.section--cream .story__list li { color: var(--text-muted); }
+
+/* Match split paragraph size to the story prose on the About page */
+.about-page .split__text p { font-size: 18px; line-height: 1.8; margin-bottom: var(--space-md); }
+
+@media (max-width: 720px) {
+  .story__list li { font-size: 16px; }
+  .about-page .split__text p { font-size: 16px; }
+}
+
+/* --- ABOUT LETTER (reads like a written letter, merged with the active theme) --- */
+.letter {
+  padding-top: calc(var(--space-2xl) + 40px);
+  background:
+    radial-gradient(circle at 50% 0%, var(--gold-glow), transparent 55%),
+    var(--bg-deep);
+}
+.letter__sheet {
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: var(--bg-cream);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 40px,
+    rgba(var(--shadow-rgb), 0.06) 40px,
+    rgba(var(--shadow-rgb), 0.06) 41px
+  );
+  color: var(--text-dark);
+  padding: clamp(44px, 6vw, 92px) clamp(28px, 6vw, 76px);
+  border-radius: 3px;
+  border: 1px solid rgba(var(--shadow-rgb), 0.08);
+  box-shadow: 0 40px 90px rgba(var(--shadow-rgb), 0.30);
+}
+.letter__sheet p {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  line-height: 1.95;
+  color: var(--text-dark);
+  margin-bottom: 1.25em;
+  text-wrap: pretty;
+}
+.letter__sheet p:last-of-type { margin-bottom: 0; }
+
+/* Lead-in: gentle, larger opening with a gold drop-cap, like the start of a letter */
+.letter__lead {
+  font-size: 23px;
+}
+.letter__lead::first-letter {
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.72;
+  padding: 6px 12px 0 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.letter__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(32px, 4.5vw, 50px);
+  color: var(--text-dark);
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: var(--space-lg);
+}
+.letter__title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 1px;
+  margin: var(--space-md) auto 0;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+/* Quiet closing flourish */
+.letter__close {
+  margin-top: var(--space-lg);
+  text-align: center;
+  color: var(--gold);
+}
+.letter__close::before {
+  content: '\2726';
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+  .letter__sheet p { font-size: 18px; }
+  .letter__lead { font-size: 20px; }
+}
+
+
+/* --- DONATION OPTIONS (Offering section) --- */
+.donation-banner__body { flex: 1; min-width: 0; }
+.donation-options {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: var(--space-sm);
+}
+.donation-options .btn { min-width: 64px; }
+@media (max-width: 600px) {
+  .donation-banner { flex-direction: column; text-align: center; }
+  .donation-banner img { width: 100%; height: 180px; }
+  .donation-options { justify-content: center; }
+}
+
+
+/* --- NAV: Donate call-to-action (pill button) --- */
+.nav__link--cta {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 6px 18px;
+  transition: background var(--transition), color var(--transition);
+}
+.nav__link--cta::after { display: none; }
+.nav__link--cta:hover { background: var(--gold); color: var(--bg-deep); }
+
+
+/* --- COMING SOON small tag (pill under hero title) --- */
+.coming-soon__badge {
+  display: inline-block;
+  margin: 0 0 var(--space-md);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 5px 16px;
+}
