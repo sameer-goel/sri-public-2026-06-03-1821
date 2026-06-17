@@ -1106,9 +1106,18 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
     display: none; position: fixed; inset: 0; z-index: 999;
     background: var(--bg-deep); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-    margin: 0;
+    margin: 0; overflow-y: auto; padding: 88px 24px 40px;
   }
   .nav__links--open { display: flex; }
+
+  /* When the mobile menu is open, the header must NOT create a containing
+     block for the fixed full-screen menu. backdrop-filter (and transform)
+     do exactly that, which traps the menu inside the short header box and
+     makes it overlap the page content. Neutralize them while open. */
+  body.no-scroll .header,
+  body.no-scroll .header--scrolled {
+    backdrop-filter: none; -webkit-backdrop-filter: none; transform: none;
+  }
   .nav__link { font-size: 24px; font-family: var(--font-heading); }
   .nav__dropdown-trigger { font-size: 24px; font-family: var(--font-heading); color: var(--text-primary); }
   .nav__dropdown-menu {

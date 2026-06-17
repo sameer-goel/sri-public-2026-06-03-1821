@@ -4,7 +4,9 @@
   "description": "Om Sacred Space - static site. Payment-convenience checkout layer + unit tests.",
   "private": true,
   "scripts": {
-    "test": "node --test \"checkout/tests/**/*.test.js\"",
+    "test": "node --test \"checkout/tests/**/*.test.js\" \"tests/**/*.test.js\"",
+    "test:ui": "node --test \"tests/**/*.test.js\"",
+    "test:e2e": "playwright test",
     "mirror-push": "node scripts/gh-mirror-push.js",
     "serve": "node --env-file-if-exists=.env checkout/server.js",
     "serve:test": "OSS_CHECKOUT_MODE=test node --env-file-if-exists=.env checkout/server.js",
