@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Om Sacred Space</title>
+  <meta name="description" content="Sustainable, organic merchandise from Om Sacred Space. 100% organic cotton, eco-printed spiritual items.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060606;
+      --surface: #111111;
+      --surface-hover: #1a1a1a;
+      --border: #222222;
+      --text: #F8F5F0;
+      --text-muted: #999;
+      --gold: #F8D264;
+      --gold-dim: rgba(248, 210, 100, 0.15);
+      --green: #7dd3a0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      padding: 2rem 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .header__nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .header__nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .header__nav a:hover,
+    .header__nav a.active {
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .shop-hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+    }
+
+    .shop-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .shop-hero p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .eco-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--gold-dim);
+      border: 1px solid rgba(248, 210, 100, 0.3);
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    .eco-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 2rem 3rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-btn:hover,
+    .cat-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    /* Product Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .product-card__img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--surface-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--gold);
+      position: relative;
+    }
+
+    .product-card__badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: var(--green);
+      color: #060606;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .product-card__body {
+      padding: 1.2rem;
+    }
+
+    .product-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-card__desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .product-card__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-card__price {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .product-card__cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .product-card__cta:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* Sustainability Section */
+    .sustainability {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .sustainability h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .sustainability p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 0.9rem;
+    }
+
+    .eco-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .eco-feature {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .eco-feature__icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .eco-feature__title {
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .eco-feature__desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Coming Soon Overlay */
+    .coming-soon {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 6, 6, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .product-card:hover .coming-soon {
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .shop-hero h1 { font-size: 2rem; }
+      .products { grid-template-columns: 1fr; padding: 0 1rem 3rem; }
+      .header__nav { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="header__brand">Om Sacred Space</a>
+    <nav class="header__nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="#sustainability">Our Promise</a>
+    </nav>
+  </header>
+
+  <section class="shop-hero">
+    <h1>Sacred Merchandise</h1>
+    <p>Every item is made from 100% organic cotton and natural materials. Printed with eco-friendly inks. Designed to carry intention.</p>
+    <div class="eco-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22c4-4 8-7 8-12a8 8 0 00-16 0c0 5 4 8 8 12z"/>
+        <path d="M12 10v4M10 12h4"/>
+      </svg>
+      100% Organic, Circular Economy, Zero Waste
+    </div>
+  </section>
+
+  <div class="categories">
+    <button class="cat-btn active">All</button>
+    <button class="cat-btn">Apparel</button>
+    <button class="cat-btn">Art Prints</button>
+    <button class="cat-btn">Posters</button>
+    <button class="cat-btn">Accessories</button>
+  </div>
+
+  <div class="products">
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">Organic</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x1F9D8;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Chakra Alignment Hoodie</div>
+        <div class="product-card__desc">100% GOTS organic cotton. Seven chakra symbols, gold print on midnight black.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 54</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">FSC Paper</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x1F3A8;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Sri Yantra Sacred Geometry Print</div>
+        <div class="product-card__desc">A3 fine art print on FSC-certified recycled paper. Water-based inks.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 28</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">Organic</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x1F338;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Mantra Meditation Tee</div>
+        <div class="product-card__desc">100% organic cotton tee. "Om Namah Shivaya" in Devanagari script, subtle gold foil.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 32</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">Natural</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x1F30D;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Energy Flow Canvas</div>
+        <div class="product-card__desc">50x70cm canvas on FSC wood frame. Kundalini energy visualization, hand-illustrated.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 68</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">Organic</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x1F4AB;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Sacred Space Tote Bag</div>
+        <div class="product-card__desc">Heavy-weight organic cotton tote. Om symbol with lotus mandala. Unbleached natural color.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 22</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card__img">
+        <span class="product-card__badge">FSC Paper</span>
+        <div class="coming-soon">Coming Soon</div>
+        &#x2728;
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__title">Affirmation Poster Set (3x)</div>
+        <div class="product-card__desc">Three A4 posters: Gratitude, Presence, Compassion. Minimalist gold on matte black.</div>
+        <div class="product-card__footer">
+          <span class="product-card__price">EUR 36</span>
+          <a href="#" class="product-card__cta">View</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="sustainability" id="sustainability">
+    <h2>Our Promise to the Earth</h2>
+    <p>Every product we create respects the planet. We partner with Teemill, a circular economy manufacturer powered by renewable energy.</p>
+    <div class="eco-features">
+      <div class="eco-feature">
+        <div class="eco-feature__icon">&#x1F331;</div>
+        <div class="eco-feature__title">100% Organic Cotton</div>
+        <div class="eco-feature__desc">GOTS certified. No pesticides, no synthetic fertilizers.</div>
+      </div>
+      <div class="eco-feature">
+        <div class="eco-feature__icon">&#x267B;&#xFE0F;</div>
+        <div class="eco-feature__title">Circular Economy</div>
+        <div class="eco-feature__desc">Send back worn items. We remake them into new products.</div>
+      </div>
+      <div class="eco-feature">
+        <div class="eco-feature__icon">&#x1F4A7;</div>
+        <div class="eco-feature__title">Water-Based Inks</div>
+        <div class="eco-feature__desc">No plastisol. No harmful chemicals. Safe for you and the earth.</div>
+      </div>
+      <div class="eco-feature">
+        <div class="eco-feature__icon">&#x1F30E;</div>
+        <div class="eco-feature__title">Zero Waste</div>
+        <div class="eco-feature__desc">Renewable energy factory. Compostable packaging. Nothing goes to landfill.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Om Sacred Space. All merchandise powered by <a href="https://teemill.com" target="_blank" rel="noopener">Teemill</a> circular economy.</p>
+    <p style="margin-top: 0.5rem;">Printed on demand. No waste. No excess inventory.</p>
+  </footer>
+
+</body>
+</html>

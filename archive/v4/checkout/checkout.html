@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Preview - Om Sacred Space</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <!-- Reuse the site's tokens/buttons/themes so the preview matches the brand -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="checkout.css">
+  <script>
+    // Pre-paint saved theme (same approach as the main site).
+    (function () {
+      try {
+        var t = localStorage.getItem('oss-theme') || 'divine';
+        document.documentElement.setAttribute('data-theme', t);
+        var g = localStorage.getItem('oss-glow');
+        document.documentElement.style.setProperty('--glow-intensity', ((g !== null ? g : 50) / 100));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'divine');
+      }
+    })();
+  </script>
+  <style>
+    .cx-preview { max-width: 1100px; margin: 0 auto; padding: 64px 24px 96px; }
+    .cx-preview__head { text-align: center; margin-bottom: 48px; }
+    .cx-preview__head h1 { font-size: clamp(36px, 5vw, 56px); }
+    .cx-preview__head p { color: var(--text-secondary); max-width: 620px; margin: 12px auto 0; }
+    .cx-note {
+      margin: 16px auto 0; max-width: 620px; font-size: 13px; color: var(--text-muted);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px;
+    }
+    .cx-group { margin-top: 48px; }
+    .cx-group__title {
+      font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .cx-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px;
+    }
+    .cx-tile {
+      display: flex; flex-direction: column; gap: 8px;
+      background: var(--surface-1); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .cx-tile__name { font-family: var(--font-heading); font-size: 20px; }
+    .cx-tile__unit { font-size: 13px; color: var(--text-secondary); }
+    .cx-tile__price { font-size: 22px; color: var(--gold); font-family: var(--font-heading); margin-top: 4px; }
+    .cx-tile__badge {
+      align-self: flex-start; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--bg-deep); background: var(--gold); padding: 2px 8px; border-radius: 999px;
+    }
+    .cx-tile .oss-buy { margin-top: auto; }
+  </style>
+</head>
+
+<body>
+  <div class="cx-preview">
+    <div class="cx-preview__head">
+      <p class="eyebrow">Standalone module preview</p>
+      <h1>Checkout <em>Preview</em></h1>
+      <p>Every product from the catalog, each opening the shared checkout drawer. This page is for review only - it is not linked into the live site yet.</p>
+      <p class="cx-note">No Stripe Payment Links are configured yet, so each item falls back to a prefilled "Reserve by email" action. Paste links into <strong>catalog.js</strong> to switch any item to one-tap pay.</p>
+    </div>
+    <div id="cxGroups"></div>
+  </div>
+
+  <!-- Module load order: data -> logic -> ui -->
+  <script src="catalog.js" defer></script>
+  <script src="checkout-core.js" defer></script>
+  <script src="checkout-ui.js" defer></script>
+  <script>
+    // Build preview tiles from the catalog after the module is ready.
+    document.addEventListener('DOMContentLoaded', function () {
+      var Pay = window.OSSPay;
+      var root = document.getElementById('cxGroups');
+      if (!Pay || !root) return;
+
+      var groups = {};
+      Pay.allProducts().forEach(function (p) {
+        (groups[p.group || 'Other'] = groups[p.group || 'Other'] || []).push(p);
+      });
+
+      Object.keys(groups).forEach(function (groupName) {
+        var section = document.createElement('section');
+        section.className = 'cx-group';
+        var title = document.createElement('p');
+        title.className = 'cx-group__title';
+        title.textContent = groupName;
+        section.appendChild(title);
+
+        var grid = document.createElement('div');
+        grid.className = 'cx-grid';
+        groups[groupName].forEach(function (p) {
+          var tile = document.createElement('div');
+          tile.className = 'cx-tile';
+          tile.innerHTML =
+            (p.popular ? '<span class="cx-tile__badge">Most popular</span>' : '') +
+            '<div class="cx-tile__name"></div>' +
+            '<div class="cx-tile__unit"></div>' +
+            '<div class="cx-tile__price"></div>';
+          tile.querySelector('.cx-tile__name').textContent = p.name;
+          tile.querySelector('.cx-tile__unit').textContent = p.unit;
+          tile.querySelector('.cx-tile__price').textContent = Pay.formatPrice(p.priceMinor, p.currency);
+
+          var btn = window.OSSCheckout.makeButton(p);
+          tile.appendChild(btn);
+
+          grid.appendChild(tile);
+        });
+        section.appendChild(grid);
+        root.appendChild(section);
+      });
+    });
+  </script>
+</body>
+
+</html>

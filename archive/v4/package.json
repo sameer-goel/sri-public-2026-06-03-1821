@@ -1,0 +1,18 @@
+{
+  "name": "omsacredspace",
+  "version": "1.0.0",
+  "description": "Om Sacred Space - static site. Payment-convenience checkout layer + unit tests.",
+  "private": true,
+  "scripts": {
+    "test": "node --test \"checkout/tests/**/*.test.js\"",
+    "serve": "node --env-file-if-exists=.env checkout/server.js",
+    "serve:test": "OSS_CHECKOUT_MODE=test node --env-file-if-exists=.env checkout/server.js",
+    "create-links": "node --env-file-if-exists=.env checkout/scripts/create-payment-links.js",
+    "create-links:test": "node --env-file-if-exists=.env checkout/scripts/create-payment-links.js --mode test",
+    "create-links:live": "node --env-file-if-exists=.env checkout/scripts/create-payment-links.js --mode live",
+    "create-links:dry": "node checkout/scripts/create-payment-links.js --dry-run"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

@@ -1,0 +1,21 @@
+/* ============================================
+   Om Sacred Space - Checkout
+   Lean hand-off to Stripe-hosted checkout. Inherits tokens from styles.css.
+   The whole card is the click target (no separate Book button).
+   ============================================ */
+
+/* Whole-card link wrapper. A block anchor becomes the grid item, so the card
+   keeps equal-height/hover behavior while the link stays keyboard-accessible. */
+.oss-card-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Affordance: the card looks and feels clickable. */
+.oss-card-link .card { cursor: pointer; }
+.oss-card-link:focus-visible .card {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}

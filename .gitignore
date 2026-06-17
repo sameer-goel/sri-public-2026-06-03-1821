@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Standalone sub-project — has its own git repo and deploys independently
+chatgpt-connector/
+
+# Secrets — never commit. Local only.
+.env
+.env.*
+!.env.example
+
+# Local MCP config — contains a Stripe key in its env block.
+.kiro/settings/mcp.json
+
+# Node
+node_modules/
