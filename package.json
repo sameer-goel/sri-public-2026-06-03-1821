@@ -16,6 +16,7 @@
     "create-links:dry": "node checkout/scripts/create-payment-links.js --dry-run"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "jsdom": "^29.1.1"
   }
 }

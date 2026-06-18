@@ -1112,11 +1112,15 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 
   /* When the mobile menu is open, the header must NOT create a containing
      block for the fixed full-screen menu. backdrop-filter (and transform)
-     do exactly that, which traps the menu inside the short header box and
-     makes it overlap the page content. Neutralize them while open. */
+     do exactly that, trapping the menu inside the short header box so it
+     overlaps the page. The header also has `transition: all`, which would
+     ANIMATE backdrop-filter removal (leaving a blur mid-transition and the
+     containing block intact) - so we disable the transition to drop it
+     instantly while the menu is open. */
   body.no-scroll .header,
   body.no-scroll .header--scrolled {
-    backdrop-filter: none; -webkit-backdrop-filter: none; transform: none;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+    transform: none !important; transition: none !important;
   }
   .nav__link { font-size: 24px; font-family: var(--font-heading); }
   .nav__dropdown-trigger { font-size: 24px; font-family: var(--font-heading); color: var(--text-primary); }
