@@ -76,8 +76,28 @@
     return { event: 'checkout_click', data: data };
   }
 
+  // Classify a Formspree form so a successful submit reports a useful "signup"
+  // event with which kind of form it was. Pure + testable; returns null for
+  // anything that isn't one of our enhanced forms.
+  function describeFormSubmit(form) {
+    if (!form || typeof form.querySelector !== 'function') return null;
+    var kind;
+    if (form.querySelector('.signup__row') || form.querySelector('.signup__success')) {
+      kind = 'newsletter';
+    } else if (form.querySelector('.form__fields') || form.querySelector('.form__success')) {
+      kind = 'contact';
+    } else {
+      kind = 'form';
+    }
+    return { event: 'signup', data: { form: kind } };
+  }
+
   // Exposed for tests and optional manual tracking.
-  window.OSSAnalytics = { track: ossTrack, describeCheckoutClick: describeCheckoutClick };
+  window.OSSAnalytics = {
+    track: ossTrack,
+    describeCheckoutClick: describeCheckoutClick,
+    describeFormSubmit: describeFormSubmit
+  };
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
@@ -165,6 +185,10 @@
           headers: { 'Accept': 'application/json' }
         }).then(function (r) {
           if (r.ok) {
+            // Track the successful submission as a signup event. Umami auto-
+            // attaches the page URL, so you can see which pages drive sign-ups.
+            var sub = describeFormSubmit(form);
+            if (sub) ossTrack(sub.event, sub.data);
             // Contact form pattern: swap fields block for success block.
             var fields = form.querySelector('.form__fields');
             var success = form.querySelector('.form__success');

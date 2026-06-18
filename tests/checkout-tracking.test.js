@@ -1,12 +1,13 @@
 // ============================================
-// Om Sacred Space - Checkout interest tracking tests (jsdom)
+// Om Sacred Space - Event tracking tests (jsdom)
 // Run with:  npm test   (or)  npm run test:ui
 //
-// Verifies the Umami "checkout_click" custom event wired in site.js:
+// Verifies the Umami custom events wired in site.js:
 //   1. describeCheckoutClick() - the pure detection/description helper.
-//   2. The delegated, capture-phase click listener that sends the event.
+//   2. The delegated, capture-phase click listener that sends checkout_click.
 //   3. Catalog enrichment (name/price) when window.OSSPay is present.
-//   4. Safety: analytics is a no-op (never throws) before Umami loads.
+//   4. describeFormSubmit() + a successful Formspree submit sending "signup".
+//   5. Safety: analytics is a no-op (never throws) before Umami loads.
 // ============================================
 'use strict';
 
@@ -40,6 +41,9 @@ function setupPage(bodyHtml, opts) {
     w.umami = { track: function (event, data) { w.umamiCalls.push({ event: event, data: data }); } };
   }
 
+  // Stub fetch for the Formspree submit handler (jsdom has none by default).
+  w.fetch = function () { return Promise.resolve({ ok: opts.fetchOk !== false }); };
+
   w.eval(siteSrc);
   w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
   return w;
@@ -47,6 +51,12 @@ function setupPage(bodyHtml, opts) {
 
 function click(w, el) {
   el.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+}
+
+// Submit a form and let the stubbed-fetch promise chain settle.
+async function submit(w, form) {
+  form.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
+  await new Promise(function (resolve) { setTimeout(resolve, 0); });
 }
 
 // site.js runs inside the jsdom realm, so objects it creates carry jsdom's
@@ -132,4 +142,57 @@ test('a checkout click never throws when Umami has not loaded yet', () => {
   const w = setupPage('<a class="oss-card-link" data-product="p1"><h3>x</h3></a>', { withUmami: false });
   const h3 = w.document.querySelector('h3');
   assert.doesNotThrow(function () { click(w, h3); });
+});
+
+// ============================================================
+// 4. describeFormSubmit - newsletter vs contact classification
+// ============================================================
+test('describeFormSubmit: a newsletter form is classified as "newsletter"', () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><div class="signup__row"></div><div class="signup__success"></div></form>');
+  const desc = w.OSSAnalytics.describeFormSubmit(w.document.querySelector('form'));
+  assert.deepEqual(plain(desc), { event: 'signup', data: { form: 'newsletter' } });
+});
+
+test('describeFormSubmit: a contact form is classified as "contact"', () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><div class="form__fields"></div><div class="form__success"></div></form>');
+  const desc = w.OSSAnalytics.describeFormSubmit(w.document.querySelector('form'));
+  assert.deepEqual(plain(desc), { event: 'signup', data: { form: 'contact' } });
+});
+
+test('describeFormSubmit: an unrecognized form falls back to "form"', () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><input name="email"></form>');
+  const desc = w.OSSAnalytics.describeFormSubmit(w.document.querySelector('form'));
+  assert.equal(desc.data.form, 'form');
+});
+
+test('describeFormSubmit: null/invalid input returns null', () => {
+  const w = setupPage('');
+  assert.equal(w.OSSAnalytics.describeFormSubmit(null), null);
+});
+
+// ============================================================
+// 5. End-to-end - a successful submit sends one signup event
+// ============================================================
+test('submitting the newsletter form sends a signup event (form: newsletter)', async () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><div class="signup__row"><input name="email"><button type="submit">Join</button></div><div class="signup__success" style="display:none"></div></form>');
+  await submit(w, w.document.querySelector('form'));
+
+  assert.equal(w.umamiCalls.length, 1);
+  assert.equal(w.umamiCalls[0].event, 'signup');
+  assert.equal(w.umamiCalls[0].data.form, 'newsletter');
+});
+
+test('submitting the contact form sends a signup event (form: contact)', async () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><div class="form__fields"><input name="email"><button type="submit">Send</button></div><div class="form__success" style="display:none"></div></form>');
+  await submit(w, w.document.querySelector('form'));
+
+  assert.equal(w.umamiCalls.length, 1);
+  assert.equal(w.umamiCalls[0].event, 'signup');
+  assert.equal(w.umamiCalls[0].data.form, 'contact');
+});
+
+test('a failed submission sends no signup event', async () => {
+  const w = setupPage('<form action="https://formspree.io/f/x"><div class="signup__row"><input name="email"><button type="submit">Join</button></div><div class="signup__success" style="display:none"></div></form>', { fetchOk: false });
+  await submit(w, w.document.querySelector('form'));
+  assert.equal(w.umamiCalls.length, 0);
 });
