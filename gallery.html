@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Om Sacred Space</title>
+  <meta name="description"
+    content="Moments from Om Sacred Space gatherings, sound baths, and sacred events. Hover over each photograph to reveal its color.">
+  <link rel="canonical" href="https://omsacredspace.com/gallery.html">
+  <meta property="og:title" content="Gallery - Om Sacred Space">
+  <meta property="og:description" content="Moments from Om Sacred Space gatherings and sacred events.">
+  <meta property="og:url" content="https://omsacredspace.com/gallery.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://omsacredspace.com/images/EventPhoto5.jpeg">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=13">
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      /* No JS: show every photo in full color. */
+      .g-item__img--color { opacity: 1 !important; -webkit-mask-image: none !important; mask-image: none !important; }
+      .g-item__img--gray { filter: none !important; }
+    </style>
+  </noscript>
+  <script>
+    // Pre-paint: apply saved theme + glow before first render (no flash).
+    (function () {
+      try {
+        var t = localStorage.getItem('oss-theme') || 'divine';
+        document.documentElement.setAttribute('data-theme', t);
+        var g = localStorage.getItem('oss-glow');
+        document.documentElement.style.setProperty('--glow-intensity', ((g !== null ? g : 50) / 100));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'divine');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="header header--scrolled" id="header">
+    <div class="header-bg"></div>
+    <nav class="nav container">
+      <a href="index.html" class="logo">
+        <div class="logo-square">
+          <div class="logo-square__border"></div>
+          <div class="logo-square__border logo-square__border--inner"></div>
+          <span class="om">ॐ</span>
+        </div>
+        <div class="logo-text">
+          <span>SACRED</span>
+          <span>SPACE</span>
+        </div>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="sound-healing.html" class="nav__link">Sound Healing</a>
+        <a href="book.html" class="nav__link">Sri Yantra Guidebook</a>
+        <a href="retreat.html" class="nav__link">Sacred Retreat</a>
+        <a href="gallery.html" class="nav__link nav__link--active">Gallery</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="sound-healing-course.html" class="nav__link">Course</a>
+        <a href="donate.html" class="nav__link nav__link--cta">Donate</a>
+        <!-- Sacred Store temporarily disabled -->
+        <!-- <a href="shop.html" class="nav__link">Sacred Store</a> -->
+      </div>
+      <button class="atmosphere-trigger" id="atmosphereTrigger" aria-label="Personalize atmosphere"
+        title="Atmosphere Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path
+            d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+          <path d="M18.36 5.64a9 9 0 11-12.72 0M12 8a4 4 0 100 8 4 4 0 000-8z" opacity="0.5" />
+        </svg>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main class="gallery-page">
+
+    <!-- INTRO -->
+    <section class="gallery-hero">
+      <div class="container">
+        <p class="eyebrow reveal">Moments</p>
+        <h1 class="reveal">Sacred <em>Gatherings</em></h1>
+        <p class="gallery-hero__sub reveal">A portfolio of light from our sound baths, circles, and live events.
+          Each frame rests in stillness until you move across it.</p>
+        <p class="gallery-hint reveal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" opacity="0.4" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+          Hover to reveal the color
+        </p>
+      </div>
+    </section>
+
+    <!-- GALLERY GRID -->
+    <section class="section gallery-section">
+      <div class="container">
+        <div class="gallery-grid" id="galleryGrid">
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 1">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto1.jpeg"
+              alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto1.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">01</figcaption>
+          </figure>
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 2">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto2.jpeg"
+              alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto2.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">02</figcaption>
+          </figure>
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 3">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto3.jpeg"
+              alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto3.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">03</figcaption>
+          </figure>
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 4">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto4.jpeg"
+              alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto4.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">04</figcaption>
+          </figure>
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 5">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto5.jpeg"
+              alt="Om Sacred Space event photograph" width="1308" height="1580" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto5.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">05</figcaption>
+          </figure>
+
+          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 6">
+            <img class="g-item__img g-item__img--gray" src="images/EventPhoto6.jpeg"
+              alt="Om Sacred Space event photograph" width="1310" height="1200" loading="lazy" decoding="async">
+            <img class="g-item__img g-item__img--color" src="images/EventPhoto6.jpeg" alt="" aria-hidden="true"
+              loading="lazy" decoding="async">
+            <span class="g-item__glow" aria-hidden="true"></span>
+            <figcaption class="g-item__num" aria-hidden="true">06</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <p class="footer__logo">Om Sacred Space</p>
+        <p class="footer__tagline">Sacred Sounds Transforms</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/healingsuhana" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.088 4.088 0 011.47.957c.453.453.78.898.957 1.47.163.46.349 1.26.404 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.241 1.97-.404 2.43a4.088 4.088 0 01-.957 1.47 4.088 4.088 0 01-1.47.957c-.46.163-1.26.349-2.43.404-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.97-.241-2.43-.404a4.088 4.088 0 01-1.47-.957 4.088 4.088 0 01-.957-1.47c-.163-.46-.349-1.26-.404-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.055-1.17.241-1.97.404-2.43a4.088 4.088 0 01.957-1.47A4.088 4.088 0 015.064 2.3c.46-.163 1.26-.349 2.43-.404C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.902.333 4.14.63a5.876 5.876 0 00-2.126 1.384A5.876 5.876 0 00.63 4.14C.333 4.902.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.058 1.278.261 2.151.558 2.913a5.876 5.876 0 001.384 2.126 5.876 5.876 0 002.126 1.384c.762.297 1.635.5 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.058 2.151-.261 2.913-.558a5.876 5.876 0 002.126-1.384 5.876 5.876 0 001.384-2.126c.297-.762.5-1.635.558-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.278-.261-2.151-.558-2.913a5.876 5.876 0 00-1.384-2.126A5.876 5.876 0 0019.86.63C19.098.333 18.225.13 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@healingsuhana/videos" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z M9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <a href="about.html">About</a>
+        <a href="sound-healing.html#distance">Distance Healing</a>
+        <a href="sound-healing.html#programs">Programs</a>
+        <a href="sound-healing.html#contact">Contact</a>
+      </div>
+      <div class="footer__legal">
+        <p>&copy; 2025 Om Sacred Space. All rights reserved.</p>
+        <p>VAT NL005141661B41</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SETTINGS PANEL -->
+  <div class="tp" id="themePanel">
+    <div class="tp__header">
+      <h4>Settings</h4>
+      <button class="tp__close" id="themePanelClose" aria-label="Close settings panel">&times;</button>
+    </div>
+    <div class="tp__section">
+      <p class="tp__label">Presets</p>
+      <div class="tp__presets" id="themePresets">
+        <button class="tp__preset" data-theme="dark">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0c0a1d,#110e2a)"></span>
+          <span>Mystic Dark</span>
+        </button>
+        <button class="tp__preset" data-theme="light">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#faf8f5,#f2efe9)"></span>
+          <span>Sacred Light</span>
+        </button>
+        <button class="tp__preset" data-theme="forest">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0a1a12,#0f2618)"></span>
+          <span>Forest Temple</span>
+        </button>
+        <button class="tp__preset" data-theme="ocean">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#0a1520,#0c1e2e)"></span>
+          <span>Ocean Depth</span>
+        </button>
+        <button class="tp__preset" data-theme="rose">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#1d0f18,#2a1520)"></span>
+          <span>Rose Quartz</span>
+        </button>
+        <button class="tp__preset" data-theme="sand">
+          <span class="tp__swatch" style="background:linear-gradient(135deg,#f5f0e8,#ebe4d8)"></span>
+          <span>Desert Sand</span>
+        </button>
+        <button class="tp__preset" data-theme="divine">
+          <span class="tp__swatch"
+            style="background:linear-gradient(135deg,#0d0b1a,#1a1030);box-shadow:0 0 8px rgba(180,120,255,0.4),0 0 8px rgba(100,200,255,0.3)"></span>
+          <span>Divine Lights</span>
+        </button>
+      </div>
+    </div>
+    <div class="tp__section">
+      <p class="tp__label">Active: <strong id="activeThemeName">Mystic Dark</strong></p>
+    </div>
+    <div class="tp__section" id="glowSection">
+      <p class="tp__label">Glow Intensity</p>
+      <div class="tp__slider-wrap">
+        <input type="range" class="tp__slider" id="glowSlider" min="0" max="100" value="100">
+        <span class="tp__slider-val" id="glowVal">100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="tp__backdrop" id="tpBackdrop"></div>
+
+  <!-- Mobile menu, scroll reveal: see site.js. Theme: see theme.js. -->
+  <script src="site.js" defer></script>
+  <script src="theme.js" defer></script>
+
+  <!-- Gallery color-reveal spotlight ------------------------------------------
+       Each photo is stacked as two layers: a grayscale base and a full-color
+       copy. The color copy is masked by a radial gradient centered on the
+       pointer (CSS custom props --x / --y set on the figure), so only the
+       area under the cursor is revealed in color. Pointer events cover mouse,
+       pen, and touch-drag. Touch devices that can't hover fall back to full
+       color via the @media (hover: none) rule in styles.css. -->
+  <script>
+    (function () {
+      'use strict';
+      var items = document.querySelectorAll('.g-item');
+      if (!items.length || !('requestAnimationFrame' in window)) return;
+      // If the device can't hover (most phones/tablets), CSS already shows the
+      // photos in full color - skip the pointer wiring entirely.
+      if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+
+      items.forEach(function (item) {
+        var raf = null, px = 0, py = 0;
+
+        function paint() {
+          raf = null;
+          item.style.setProperty('--x', px + 'px');
+          item.style.setProperty('--y', py + 'px');
+        }
+        function track(e) {
+          var r = item.getBoundingClientRect();
+          px = e.clientX - r.left;
+          py = e.clientY - r.top;
+          if (raf === null) raf = requestAnimationFrame(paint);
+        }
+        function enter() { item.classList.add('is-active'); }
+        function leave() {
+          item.classList.remove('is-active');
+          // Park the spotlight off-canvas so the next hover starts clean.
+          item.style.setProperty('--x', '-9999px');
+          item.style.setProperty('--y', '-9999px');
+        }
+
+        item.addEventListener('pointerenter', enter);
+        item.addEventListener('pointermove', track);
+        item.addEventListener('pointerleave', leave);
+
+        // Keyboard focus reveals the whole frame in color (accessibility).
+        item.addEventListener('focus', function () { item.classList.add('is-focus'); });
+        item.addEventListener('blur', function () { item.classList.remove('is-focus'); });
+      });
+    })();
+  </script>
+</body>
+
+</html>

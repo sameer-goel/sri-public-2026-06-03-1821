@@ -1471,3 +1471,106 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
   font-style: normal; font-size: 0.8rem; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--gold);
 }
+
+
+/* ============================================
+   GALLERY  (portfolio masonry + color-reveal spotlight)
+   --------------------------------------------
+   Photos rest in grayscale and reveal their color in a soft circle that
+   follows the pointer. The spotlight position lives in --x / --y, set on
+   each .g-item by gallery.html and inherited by the layers below.
+   ============================================ */
+.gallery-page { padding-top: 72px; }            /* clear the fixed header */
+
+.gallery-hero { text-align: center; padding: var(--space-2xl) 0 var(--space-md); }
+.gallery-hero h1 { margin-bottom: var(--space-sm); }
+.gallery-hero__sub {
+  color: var(--text-secondary); font-size: 17px;
+  max-width: 620px; margin: 0 auto;
+}
+.gallery-hint {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: var(--space-md);
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+}
+.gallery-hint svg { width: 18px; height: 18px; }
+
+.gallery-section { padding-top: var(--space-lg); }
+
+/* Masonry via CSS columns - simple, dependency-free, keeps each photo's
+   natural aspect ratio while balancing portrait + landscape frames. */
+.gallery-grid { columns: 3; column-gap: 22px; }
+
+.g-item {
+  --x: -9999px; --y: -9999px; --spot: 150px;       /* spotlight defaults */
+  position: relative; display: block;
+  break-inside: avoid; margin: 0 0 22px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--surface-1); border: 1px solid var(--border-subtle);
+  box-shadow: 0 12px 40px rgba(var(--shadow-rgb), 0.28);
+  cursor: crosshair; outline: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.g-item:hover { transform: translateY(-4px); box-shadow: 0 22px 60px rgba(var(--shadow-rgb), 0.4); }
+.g-item:focus-visible { box-shadow: 0 0 0 2px var(--gold), 0 22px 60px rgba(var(--shadow-rgb), 0.4); }
+
+.g-item__img { width: 100%; height: auto; display: block; }
+
+/* Base layer: desaturated and slightly dimmed so the reveal pops. */
+.g-item__img--gray {
+  filter: grayscale(1) brightness(0.9) contrast(0.96);
+  transition: filter 0.4s ease;
+}
+
+/* Color layer: stacked exactly over the base, revealed through a radial
+   mask centered on the pointer. Hidden (opacity 0) until the frame is active. */
+.g-item__img--color {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 0.35s ease;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle var(--spot) at var(--x) var(--y), #000 0%, #000 55%, rgba(0,0,0,0) 100%);
+          mask-image: radial-gradient(circle var(--spot) at var(--x) var(--y), #000 0%, #000 55%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.g-item.is-active .g-item__img--color { opacity: 1; }
+.g-item.is-active .g-item__img--gray { filter: grayscale(1) brightness(0.66) contrast(0.96); }
+
+/* Keyboard focus: reveal the whole frame in color (no pointer to follow). */
+.g-item.is-focus .g-item__img--color {
+  opacity: 1; -webkit-mask-image: none; mask-image: none;
+}
+.g-item.is-focus .g-item__img--gray { filter: none; }
+
+/* Soft gold glow that trails the cursor for a touch of life. */
+.g-item__glow {
+  position: absolute; inset: 0; pointer-events: none;
+  opacity: 0; transition: opacity 0.35s ease; mix-blend-mode: screen;
+  background: radial-gradient(circle 170px at var(--x) var(--y), var(--gold-glow), rgba(0,0,0,0) 70%);
+}
+.g-item.is-active .g-item__glow { opacity: 1; }
+
+/* Frame number, surfaces on reveal. */
+.g-item__num {
+  position: absolute; left: 16px; bottom: 14px; z-index: 2;
+  margin: 0; font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.1em;
+  color: #fff; opacity: 0; transition: opacity 0.35s ease;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+}
+.g-item.is-active .g-item__num,
+.g-item.is-focus .g-item__num { opacity: 0.92; }
+
+@media (max-width: 900px) { .gallery-grid { columns: 2; } }
+@media (max-width: 560px) { .gallery-grid { columns: 1; } }
+
+/* Touch / no-hover devices can't drive the spotlight, so present the photos
+   in full color and drop the pointer affordances. */
+@media (hover: none) {
+  .g-item { cursor: default; }
+  .g-item__img--color { opacity: 1; -webkit-mask-image: none; mask-image: none; }
+  .g-item__img--gray { filter: none; }
+  .g-item__glow { display: none; }
+  .g-item__num { opacity: 0.92; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-item, .g-item__img--gray, .g-item__img--color, .g-item__glow, .g-item__num { transition: none; }
+}
