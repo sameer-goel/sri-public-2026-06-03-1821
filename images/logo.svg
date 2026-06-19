@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0b1a"/>
+      <stop offset="1" stop-color="#1a1030"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="64" y="64" width="384" height="384" rx="56" fill="none" stroke="#c9a96e" stroke-width="6"/>
+  <rect x="94" y="94" width="324" height="324" rx="40" fill="none" stroke="#c9a96e" stroke-opacity="0.45" stroke-width="3"/>
+  <text x="256" y="366" text-anchor="middle" font-family="Kohinoor Devanagari, Devanagari MT, sans-serif" font-size="300" fill="#c9a96e">&#x0950;</text>
+</svg>
