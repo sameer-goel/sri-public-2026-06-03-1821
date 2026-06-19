@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=14">
   <noscript>
     <style>
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -94,7 +94,8 @@
       <div class="container">
         <p class="eyebrow reveal">Moments</p>
         <h1 class="reveal">Sacred <em>Gatherings</em></h1>
-        <p class="gallery-hero__sub reveal">A portfolio of light from our sound baths, circles, and live events.</p>
+        <p class="gallery-hero__sub reveal">A portfolio of light from our sound baths, circles, and live events &mdash;
+          grouped into collections by the format each moment was captured in.</p>
         <p class="gallery-hint reveal" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
             stroke-linejoin="round">
@@ -106,66 +107,114 @@
       </div>
     </section>
 
-    <!-- GALLERY GRID -->
+    <!-- GALLERY COLLECTIONS -------------------------------------------------
+         The six event photographs carry no EXIF date or location (metadata is
+         stripped on upload), so they're organised by the one reliable signal
+         each file still holds: its dimensions. Photos that share an aspect
+         ratio were shot on the same device in the same session, so each
+         aspect-ratio cluster becomes a collection. The data-ar attribute on
+         every figure records the ratio; the clustering script near the foot of
+         this page re-buckets every photo on load, so the grouping stays
+         correct even if photos are added or swapped. -->
     <section class="section gallery-section">
       <div class="container">
-        <div class="gallery-grid" id="galleryGrid">
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 1">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto1.jpeg"
-              alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto1.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">01</figcaption>
-          </figure>
+        <!-- Collection 01 - 4:3 landscape (1280x960) -->
+        <article class="gallery-collection" data-format="4:3">
+          <header class="collection-head reveal">
+            <span class="collection-kicker">Collection 01</span>
+            <h2 class="collection-title">Sound Bath Circles</h2>
+            <p class="collection-meta"><span class="collection-count">2</span> photographs &middot; 4:3 format</p>
+          </header>
+          <div class="gallery-grid collection-grid" data-collection="1">
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 2">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto2.jpeg"
-              alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto2.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">02</figcaption>
-          </figure>
+            <figure class="g-item reveal" tabindex="0" data-ar="1.333"
+              aria-label="Om Sacred Space event photograph 1">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto1.jpeg"
+                alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto1.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">01</figcaption>
+            </figure>
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 3">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto3.jpeg"
-              alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto3.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">03</figcaption>
-          </figure>
+            <figure class="g-item reveal" tabindex="0" data-ar="1.333"
+              aria-label="Om Sacred Space event photograph 2">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto2.jpeg"
+                alt="Om Sacred Space event photograph" width="1280" height="960" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto2.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">02</figcaption>
+            </figure>
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 4">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto4.jpeg"
-              alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto4.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">04</figcaption>
-          </figure>
+          </div>
+        </article>
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 5">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto5.jpeg"
-              alt="Om Sacred Space event photograph" width="1308" height="1580" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto5.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">05</figcaption>
-          </figure>
+        <!-- Collection 02 - 3:2 landscape (1280x853) -->
+        <article class="gallery-collection" data-format="3:2">
+          <header class="collection-head reveal">
+            <span class="collection-kicker">Collection 02</span>
+            <h2 class="collection-title">Sacred Gatherings</h2>
+            <p class="collection-meta"><span class="collection-count">2</span> photographs &middot; 3:2 format</p>
+          </header>
+          <div class="gallery-grid collection-grid" data-collection="2">
 
-          <figure class="g-item reveal" tabindex="0" aria-label="Om Sacred Space event photograph 6">
-            <img class="g-item__img g-item__img--gray" src="images/EventPhoto6.jpeg"
-              alt="Om Sacred Space event photograph" width="1310" height="1200" loading="lazy" decoding="async">
-            <img class="g-item__img g-item__img--color" src="images/EventPhoto6.jpeg" alt="" aria-hidden="true"
-              loading="lazy" decoding="async">
-            <span class="g-item__glow" aria-hidden="true"></span>
-            <figcaption class="g-item__num" aria-hidden="true">06</figcaption>
-          </figure>
+            <figure class="g-item reveal" tabindex="0" data-ar="1.501"
+              aria-label="Om Sacred Space event photograph 3">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto3.jpeg"
+                alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto3.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">03</figcaption>
+            </figure>
 
-        </div>
+            <figure class="g-item reveal" tabindex="0" data-ar="1.501"
+              aria-label="Om Sacred Space event photograph 4">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto4.jpeg"
+                alt="Om Sacred Space event photograph" width="1280" height="853" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto4.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">04</figcaption>
+            </figure>
+
+          </div>
+        </article>
+
+        <!-- Collection 03 - upright / portrait (1308x1580, 1310x1200) -->
+        <article class="gallery-collection" data-format="upright">
+          <header class="collection-head reveal">
+            <span class="collection-kicker">Collection 03</span>
+            <h2 class="collection-title">Moments of Stillness</h2>
+            <p class="collection-meta"><span class="collection-count">2</span> photographs &middot; upright format</p>
+          </header>
+          <div class="gallery-grid collection-grid" data-collection="3">
+
+            <figure class="g-item reveal" tabindex="0" data-ar="0.828"
+              aria-label="Om Sacred Space event photograph 5">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto5.jpeg"
+                alt="Om Sacred Space event photograph" width="1308" height="1580" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto5.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">05</figcaption>
+            </figure>
+
+            <figure class="g-item reveal" tabindex="0" data-ar="1.092"
+              aria-label="Om Sacred Space event photograph 6">
+              <img class="g-item__img g-item__img--gray" src="images/EventPhoto6.jpeg"
+                alt="Om Sacred Space event photograph" width="1310" height="1200" loading="lazy" decoding="async">
+              <img class="g-item__img g-item__img--color" src="images/EventPhoto6.jpeg" alt="" aria-hidden="true"
+                loading="lazy" decoding="async">
+              <span class="g-item__glow" aria-hidden="true"></span>
+              <figcaption class="g-item__num" aria-hidden="true">06</figcaption>
+            </figure>
+
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -261,6 +310,56 @@
   <!-- Mobile menu, scroll reveal: see site.js. Theme: see theme.js. -->
   <script src="site.js" defer></script>
   <script src="theme.js" defer></script>
+
+  <!-- Smart aspect-ratio clustering ------------------------------------------
+       Each photo's true dimensions decide which collection it belongs to. On
+       load we read every frame's aspect ratio (natural size first, declared
+       width/height as a fallback), bucket it into wide / standard / upright,
+       drop it into the matching collection, and refresh each collection's
+       photo count. The page ships pre-sorted, so this is normally a no-op -
+       but it keeps the grouping honest if photos are ever added or reordered. -->
+  <script>
+    (function () {
+      'use strict';
+      var grids = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.collection-grid'), function (g) {
+        grids[g.getAttribute('data-collection')] = g;
+      });
+      var items = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+      if (!items.length || !Object.keys(grids).length) return;
+
+      function ratioOf(item) {
+        var img = item.querySelector('.g-item__img--gray');
+        var w = (img && img.naturalWidth) || (img && parseFloat(img.getAttribute('width')));
+        var h = (img && img.naturalHeight) || (img && parseFloat(img.getAttribute('height')));
+        if (w && h) return w / h;
+        return parseFloat(item.getAttribute('data-ar')) || 1;
+      }
+
+      // Map an aspect ratio to a collection: upright (<1.15), ~4:3 (<1.42),
+      // else wider landscape. Tag orientation for any future styling hooks.
+      function collectionFor(r, item) {
+        item.classList.toggle('is-portrait', r < 1);
+        item.classList.toggle('is-landscape', r >= 1);
+        if (r < 1.15) return '3';
+        if (r < 1.42) return '1';
+        return '2';
+      }
+
+      items.forEach(function (item) {
+        var target = grids[collectionFor(ratioOf(item), item)];
+        if (target && item.parentNode !== target) target.appendChild(item);
+      });
+
+      // Refresh the "N photographs" count shown in each collection header.
+      Object.keys(grids).forEach(function (key) {
+        var grid = grids[key];
+        var count = grid.querySelectorAll('.g-item').length;
+        var head = grid.parentNode.querySelector('.collection-count');
+        if (head) head.textContent = count;
+      });
+    })();
+  </script>
 
   <!-- Gallery color-reveal spotlight ------------------------------------------
        Each photo is stacked as two layers: a grayscale base and a full-color

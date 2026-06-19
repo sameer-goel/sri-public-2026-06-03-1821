@@ -1496,8 +1496,39 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 
 .gallery-section { padding-top: var(--space-lg); }
 
-/* Masonry via CSS columns - simple, dependency-free, keeps each photo's
-   natural aspect ratio while balancing portrait + landscape frames. */
+/* --- Collections -----------------------------------------------------------
+   Photos are grouped into aspect-ratio collections (see gallery.html). Each
+   collection gets a centered header and its own grid so the eye reads one
+   event at a time. */
+.gallery-collection { margin-bottom: var(--space-2xl); }
+.gallery-collection:last-child { margin-bottom: 0; }
+
+.collection-head { text-align: center; margin-bottom: var(--space-lg); }
+.collection-kicker {
+  display: inline-block; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.collection-title { margin: 0 0 6px; font-size: clamp(26px, 4vw, 38px); }
+.collection-meta {
+  margin: 0; color: var(--text-secondary); font-size: 13px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* Collection grid: two frames side by side, each keeping its natural ratio.
+   align-items:start lets portrait + landscape pairs sit cleanly together. */
+.collection-grid {
+  columns: auto;                                   /* cancel the masonry columns below */
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 22px; align-items: start;
+}
+.collection-grid .g-item { margin: 0; }            /* grid gap handles spacing */
+
+/* Upright collections lean narrower so portraits don't tower over the page. */
+.gallery-collection[data-format="upright"] .collection-grid {
+  max-width: 760px; margin-inline: auto;
+}
+
+/* Masonry via CSS columns - fallback for any ungrouped .gallery-grid. */
 .gallery-grid { columns: 3; column-gap: 22px; }
 
 .g-item {
@@ -1559,6 +1590,7 @@ input:checked + .tp__slider-toggle:before { transform: translateX(20px); }
 .g-item.is-focus .g-item__num { opacity: 0.92; }
 
 @media (max-width: 900px) { .gallery-grid { columns: 2; } }
+@media (max-width: 700px) { .collection-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .gallery-grid { columns: 1; } }
 
 /* Touch / no-hover devices can't drive the spotlight, so present the photos
