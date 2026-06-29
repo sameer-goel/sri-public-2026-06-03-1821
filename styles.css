@@ -354,6 +354,8 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
 .card:hover .card__img img { transform: scale(1.05); }
 .card__body { padding: var(--space-md); }
 .card__body h3 { color: var(--text-dark); margin-bottom: var(--space-xs); }
+.card__icon { width: 46px; height: 46px; margin-bottom: 14px; color: var(--gold); }
+.card__icon svg { width: 100%; height: 100%; display: block; }
 .card__price { font-size: 22px; font-weight: 600; color: var(--text-dark); margin-bottom: var(--space-sm); font-family: var(--font-heading); }
 .card__price span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
 .card__body ul { font-size: 14px; color: var(--text-muted); }
@@ -535,6 +537,20 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
 .form__group input::placeholder, .form__group textarea::placeholder { color: var(--text-muted); }
 .form__group input:focus, .form__group textarea:focus { border-color: var(--gold); background: rgba(201,169,110,0.04); }
 .form__group textarea { min-height: 140px; resize: vertical; }
+/* Interest checkboxes (volunteer form) */
+.check-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 18px;
+}
+.check {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 400; text-transform: none; letter-spacing: 0;
+  color: var(--text-secondary); cursor: pointer; margin: 0;
+}
+.check input[type="checkbox"] {
+  width: 18px; height: 18px; flex: 0 0 18px; padding: 0; margin: 0;
+  accent-color: var(--gold); cursor: pointer;
+}
+@media (max-width: 560px) { .check-grid { grid-template-columns: 1fr; } }
 .form__success {
   display: none; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: var(--space-xl) 0; gap: var(--space-sm);
